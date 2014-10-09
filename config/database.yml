@@ -17,6 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: openmooc
+  password: sLStRPyPKd8b7V
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -82,4 +84,4 @@ production:
   <<: *default
   database: openmooc_production
   username: openmooc
-  password: <%= ENV['OPENMOOC_DATABASE_PASSWORD'] %>
+  password: sLStRPyPKd8b7V
