@@ -22,4 +22,3 @@ Feature: User Signin/Signout
     And I visit the main page
     Then I am on the main page
     And I am signed in
-
