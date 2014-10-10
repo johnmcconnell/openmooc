@@ -1,5 +1,5 @@
 Given(/^I am on the signup page$/) do
-  visit('/signup')
+  visit('/users/sign_up')
 end
 
 When(/^I enter valid signup creditials$/) do
