@@ -11,6 +11,11 @@ Feature: User Signup
     When I enter bad email creditials
     Then I should see an email signup error
 
+  Scenario: Signup an existing user email
+    Given I am on the signup page
+    When I enter existing email creditials
+    Then I should see an existing user signup error
+
   Scenario: Signup a bad confirm password
     Given I am on the signup page
     When I enter bad password creditials
