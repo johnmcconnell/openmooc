@@ -19,7 +19,7 @@ SIGNUP_CREDENTIALS = {
 }
 
 def reset_password_button_value
-  'reset my password'
+  'Reset my password'
 end
 
 Given(/^I am on the signup page$/) do
