@@ -1,0 +1,5 @@
+- flash.each do |key, value|
+  .alert{class: "alert-#{key}"}
+    %a{href: "#", data:{dismiss: "alert"}, class:"close"} ×
+    %ul
+      %li= value

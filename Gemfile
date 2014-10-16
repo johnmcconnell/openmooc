@@ -40,9 +40,11 @@ gem 'spring',        group: :development
 
 gem 'dotenv-rails'
 gem 'devise'
-gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'haml-rails'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 group :test do
   gem 'cucumber-rails', require: false
