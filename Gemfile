@@ -50,4 +50,6 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'rspec-expectations'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end

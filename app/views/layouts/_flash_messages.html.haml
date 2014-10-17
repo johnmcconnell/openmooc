@@ -1,5 +1,5 @@
 - flash.each do |type, messages|
-  - messages.each do | message |
+  - Array(messages).each do | message |
     .alert{class: "alert-dismissible alert-#{type}"}
       %button{type: "button", data:{dismiss: "alert"}, class:"close"} &times;
       = message
