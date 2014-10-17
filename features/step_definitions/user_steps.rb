@@ -1,22 +1,21 @@
-SIGNIN_CREDENTIALS = {
-  valid: { user_email: 'test@test.com', user_password: 'p@ssw0rd' },
-  invalid: { user_email: 'afaf32h@eqoge.cod', user_password: 'fjeoqfadhf' }
-}
+def unregistered_user
+  @unregistered_user ||= build(:unregistered_user)
+end
 
-SIGNUP_CREDENTIALS = {
-  valid: { user_email: 'test@test.com',
-           user_password: 'p@ssw0rd',
-           user_password_confirmation: 'p@ssw0rd' },
-  bad_email: { user_email: 'com.%214test@th$ahah.a',
-               user_password: 'p@ssw0rd',
-               user_password_confirmation: 'p@ssw0rd' },
-  bad_password: { user_email: 'test@test.com',
-                  user_password: 'p@sdagewjgo',
-                  user_password_confirmation: 'adoadfjoh' },
-  existing_user: { user_email: 'existing@test.com',
-                   user_password: 'p@ssw0rd',
-                   user_password_confirmation: 'p@ssw0rd' }
-}
+def registered_user
+  @registered_user ||= create(:registered_user)
+end
+
+def signup_inputs(user)
+  { Email: user.email,
+    Password: user.password,
+    'Password confirmation' => user.password }
+end
+
+def signin_inputs(user)
+ { Email: user.email,
+   Password: user.password }
+end
 
 def reset_password_button_value
   'Reset my password'
@@ -27,40 +26,39 @@ Given(/^I am on the signup page$/) do
 end
 
 When(/^I enter valid signup credentials$/) do
-  submit_form('sign up', SIGNUP_CREDENTIALS[:valid])
+  submit_form('Sign up', signup_inputs(unregistered_user))
 end
 
 Then(/^I should be on the signup confirmation page$/) do
-  expect(page).to have_content('Thank you for signing up')
+  expect(page).to have_content('A message with a confirmation link has been sent to your email address')
 end
 
 When(/^I enter bad email signup credentials$/) do
-  submit_form('Sign up', SIGNUP_CREDENTIALS[:bad_email])
+  user = unregistered_user
+  user.email = 'real%3&@bad$#@.com'
+  submit_form('Sign up', signup_inputs(user))
 end
 
 Then(/^I should see an email signup error$/) do
-  expect(page).to have_content('the email is invalid, try again')
+  expect(page).to have_content('Email is invalid')
 end
 
 When(/^I enter bad password signup credentials$/) do
-  submit_form('Sign up', SIGNUP_CREDENTIALS[:bad_password])
+  user = unregistered_user
+  user.password = '1234'
+  submit_form('Sign up', signup_inputs(user))
 end
 
 Then(/^I should see a password signup error$/) do
-  expect(page).to have_content('the password is invalid, try again')
+  expect(page).to have_content('Password is too short')
 end
 
 Given(/^I am on the reset password page$/) do
   visit('/users/password/new')
 end
 
-When(/^I enter valid reset credentials$/) do
-  submit_form(reset_password_button_value,
-              user_email: 'test@test.com')
-end
-
 Then(/^I should see reset confirmation$/) do
-  expect(page).to have_content('instructions have been sent')
+  expect(page).to have_content('You will receive a password reset email in a few minutes')
 end
 
 Given(/^I am on the signin page$/) do
@@ -75,37 +73,28 @@ Then(/^I should be on the reset password page$/) do
   expect(page).to have_content('Forgot your password?')
 end
 
-When(/^I enter invalid reset credentials$/) do
-  submit(reset_password_button_value,
-         email: 'not_a_real_user@test.com')
-end
-
-Then(/^I should see no username error$/) do
-  expect(page).to have_content('that email is not registered')
-end
-
 When(/^I enter valid signin credentials$/) do
-  submit_form('Sign in', SIGNIN_CREDENTIALS[:valid])
+  submit_form('Log in', signin_inputs(registered_user))
 end
 
 Then(/^I should be on the main page$/) do
-  expect(page).to have_content('Welcome to OpenMooc')
+  expect(page).to have_content('OpenMooc, a truly open University')
 end
 
 Then(/^I should be signed in$/) do
-  expect(page).to have_selector(:link_or_button, 'Sign out')
+  expect(page).to have_selector(:link_or_button, 'Log out')
 end
 
 When(/^I enter invalid signin credentials$/) do
-  submit_form('Sign in', SIGNIN_CREDENTIALS[:invalid])
+  submit_form('Log in', signin_inputs(unregistered_user))
 end
 
 Then(/^I should be on the signin page$/) do
-  expect(page).to have_content('Sign in')
+  expect(page).to have_content('Log in')
 end
 
 Then(/^I should see invalid username\/password error$/) do
-  expect(page).to have_content('invalid username and password')
+  expect(page).to have_content('Invalid email address or password')
 end
 
 Then(/^I should see reset password link$/) do
@@ -113,7 +102,7 @@ Then(/^I should see reset password link$/) do
 end
 
 When(/^I leave the site$/) do
-  visit('www.google.com')
+  visit('http://www.google.com')
 end
 
 When(/^I visit the main page$/) do
@@ -121,17 +110,29 @@ When(/^I visit the main page$/) do
 end
 
 When(/^I sign out$/) do
-  submit_form('Sign out')
+  click_link('Log out')
 end
 
 Then(/^I should not be signed in$/) do
-  expect(page).to have_selector(:link_or_button, 'Sign in')
+  expect(page).to have_selector(:link_or_button, 'Log in')
 end
 
 When(/^I enter existing email signup credentials$/) do
-  submit_form('Sign up', SIGNUP_CREDENTIALS[:existing_user])
+  submit_form('Sign up', signup_inputs(registered_user))
 end
 
 Then(/^I should see an existing user signup error$/) do
-  expect(page).to have_content('Sorry, that username is taken.')
+  expect(page).to have_content('Email has already been taken')
+end
+
+When(/^I submit a registered email$/) do
+  submit_form(reset_password_button_value, Email: registered_user.email)
+end
+
+When(/^I submit a non user email$/) do
+  submit_form(reset_password_button_value, Email: unregistered_user.email)
+end
+
+Then(/^I should see no email error$/) do
+  expect(page).to have_content('Email not found')
 end
