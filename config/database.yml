@@ -83,7 +83,7 @@ test: &test
 production:
   <<: *default
   database: openmooc_production
-  username: openmooc
+  username: moocipedia
   password: sLStRPyPKd8b7V
 
 cucumber:
