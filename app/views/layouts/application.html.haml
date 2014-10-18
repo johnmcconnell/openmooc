@@ -29,7 +29,7 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li= link_to "Courses", "/#"
-          = form_for :course, url: course_search_path, html: {class: 'navbar-form navbar-left', role: 'search' } do |f|
+          = form_for :course, url: course_query_path, method: :get, html: {class: 'navbar-form navbar-left', role: 'search' } do |f|
             .form-group
               = f.text_field :query, class: 'form-control', placeholder: "#{t('app_name')} 101"
             = f.submit class: 'btn btn-default'

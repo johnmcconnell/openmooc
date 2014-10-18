@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
-  get 'update/edit'
-
-  get 'update/destroy'
-
-  get 'update/index'
-
-  get 'update/show'
-
   devise_for :users
   resources :course
+  get 'course/query', to: 'course#query'
   root to: "application#index"
 end

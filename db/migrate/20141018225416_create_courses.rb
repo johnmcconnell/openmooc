@@ -1,7 +1,7 @@
 class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
-      t.integer :id
+      t.index :id
       t.string :title
       t.string :subject
       t.string :topic
@@ -9,6 +9,5 @@ class CreateCourses < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :courses, :id, unique: true
   end
 end
