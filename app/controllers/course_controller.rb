@@ -1,5 +1,6 @@
 class CourseController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  respond_to :html
 
   def index
     @courses = Course.all
@@ -8,6 +9,10 @@ class CourseController < ApplicationController
 
   def show
     respond_with(@course)
+  end
+
+  def query
+    show
   end
 
   def new
