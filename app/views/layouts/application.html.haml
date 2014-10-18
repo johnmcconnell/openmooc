@@ -25,28 +25,20 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand(href="#") Openmooc
+        %a.navbar-brand(href="") OpenMooc
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
+            %li= link_to "Courses", "/#"
+            %li= link_to "Contribute", "/#"
+            %li= link_to "About", "/#"
             - if current_user
-              %li= link_to "Log out", destroy_user_session_path, method: :delete
+              %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
               %li=link_to "Log in", new_user_session_path
     .container
       .row
-        .col-lg-9
+        .col-xs-12
           = render 'layouts/flash_messages'
           = yield
-        .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
       %footer
         %p &copy; Company 2014

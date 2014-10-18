@@ -45,6 +45,7 @@ gem 'haml-rails'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'puma'
 
 group :test do
   gem 'cucumber-rails', require: false
