@@ -24,13 +24,13 @@ class CourseController < ApplicationController
   end
 
   def create
-    @course = Course.new(test_params)
+    @course = Course.new(course_params)
     @course.save
     respond_with(@course)
   end
 
   def update
-    @course.update(test_params)
+    @course.update(course_params)
     respond_with(@course)
   end
 

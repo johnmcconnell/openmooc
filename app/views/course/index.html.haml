@@ -1,2 +1,3 @@
-%h1 Course#index
-%p Find me in app/views/course/index.html.haml
+%h1 #{t('app_name')} Courses
+- @courses.each do |course|
+  %p course.title

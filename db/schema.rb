@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20141018225416) do
     t.string   "title"
     t.string   "subject"
     t.string   "topic"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
