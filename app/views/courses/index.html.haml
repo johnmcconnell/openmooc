@@ -1,13 +1,31 @@
-.col-xs-12
-  .row
+.row
+  .col-xs-12
     %h1 #{t('app_name')} Courses
-    = link_to new_course_path do
-      %button{type: 'button', class: 'btn btn-default btn-lg'}
-        Add course
-        %span{class: 'glyphicon glyphicon-plus'}
-  .row
-  - @courses.each do |course|
-    %p=course.title
-    %p=course.subject
-    %p=course.topic
-    = link_to 'Edit', edit_course_path(course)
+.row
+  .col-xs-12
+    - @courses.each do |course|
+      .row
+        .col-xs-1
+          = link_to course do
+            = image_tag 'media-placeholder.svg', class: 'media-object', alt: '...'
+        .col-xs-11
+          .row
+            .col-xs-6
+              %h3{class: 'media-heading'}= course.title
+            .col-xs-3
+              = link_to 'Edit', edit_course_path(course), class: 'btn btn-default pull-right'
+          .row
+            .col-xs-12
+              %p
+                Subject:
+                %strong #{course.subject}
+              %p
+                Topic:
+                %strong #{course.topic}
+              %p #{course.description}
+.row
+  = link_to new_course_path do
+    %button{type: 'button', class: 'btn btn-default btn-lg'}
+      Add course
+      %span{class: 'glyphicon glyphicon-plus'}
+
