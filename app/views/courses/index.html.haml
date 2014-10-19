@@ -7,7 +7,7 @@
         %span{class: 'glyphicon glyphicon-plus'}
   .row
   - @courses.each do |course|
-    %p course.title
-    %p course.subject
-    %p course.topic
+    %p=course.title
+    %p=course.subject
+    %p=course.topic
     = link_to 'Edit', edit_course_path(course)
