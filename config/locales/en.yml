@@ -20,6 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  app_name: "Moocipedia"
+  app_name: "MOOCipedia"
   index:
     content: "Explore, Learn, Contribute."
