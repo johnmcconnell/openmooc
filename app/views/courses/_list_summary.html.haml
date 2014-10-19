@@ -1,0 +1,19 @@
+.col-xs-1
+  = link_to course do
+    = image_tag 'media-placeholder.svg', class: 'media-object', alt: '...'
+.col-xs-11
+  .row
+    .col-xs-3
+      %h3{class: 'media-heading'}
+        = link_to course.title, course
+      %p
+        Subject:
+        %strong #{course.subject}
+      %p
+        Topic:
+        %strong #{course.topic}
+    .col-xs-6
+      %p= summary_text(course.content)
+    .col-xs-3
+      = link_to 'Edit', edit_course_path(course), class: 'btn btn-default'
+
