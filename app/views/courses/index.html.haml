@@ -1,0 +1,13 @@
+.col-xs-12
+  .row
+    %h1 #{t('app_name')} Courses
+    = link_to new_course_path do
+      %button{type: 'button', class: 'btn btn-default btn-lg'}
+        Add course
+        %span{class: 'glyphicon glyphicon-plus'}
+  .row
+  - @courses.each do |course|
+    %p course.title
+    %p course.subject
+    %p course.topic
+    = link_to 'Edit', edit_course_path(course)

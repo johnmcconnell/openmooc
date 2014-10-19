@@ -1,4 +1,4 @@
-class AddReconfirmableToUsers < ActiveRecord::Migration
+class AddRecoverableToDevise < ActiveRecord::Migration
   def up
     add_column :users, :unconfirmed_email, :string
   end

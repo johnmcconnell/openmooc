@@ -6,6 +6,6 @@ FactoryGirl.define do
     title "MyString"
     subject "MyString"
     topic "MyString"
-    content "MyString"
+    content "MyText"
   end
 end

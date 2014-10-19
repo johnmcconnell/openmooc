@@ -1,0 +1,7 @@
+%h1=@course.title
+%b Subject:
+= @course.subject
+%b Topic:
+= @course.topic
+
+= render_wiki(@course.content)

@@ -1,4 +1,4 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   respond_to :html
 
@@ -12,7 +12,7 @@ class CourseController < ApplicationController
   end
 
   def query
-    show
+    index
   end
 
   def new
@@ -45,6 +45,6 @@ class CourseController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:id, :title, :subject, :topic, :content)
+      params.require(:course).permit(:title, :subject, :topic, :content)
     end
 end
