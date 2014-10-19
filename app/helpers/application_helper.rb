@@ -1,4 +1,3 @@
-require 'nokogiri'
 
 module ApplicationHelper
   def parse_wiki(wikitext)
@@ -6,6 +5,6 @@ module ApplicationHelper
   end
 
   def summary_text(wikitext)
-   truncate Nokogiri::HTML(parse_wiki(wikitext)).text, length: 350
+   truncate wikitext, length: 350
   end
 end
