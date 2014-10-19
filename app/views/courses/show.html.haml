@@ -3,5 +3,6 @@
 = @course.subject
 %b Topic:
 = @course.topic
-%b Content:
-= raw parse_wiki(@course.content)
+%b
+.well
+  = raw parse_wiki(@course.content)
