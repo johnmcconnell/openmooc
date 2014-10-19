@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   end
 
   def query
-    index
+    render :index
   end
 
   def new
