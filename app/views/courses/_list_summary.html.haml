@@ -1,19 +1,19 @@
-.col-xs-1
-  = link_to course do
-    = image_tag 'media-placeholder.svg', class: 'media-object', alt: '...'
-.col-xs-11
-  .row
-    .col-xs-3
-      %h3{class: 'media-heading'}
-        = link_to course.title, course
-      %p
-        Subject:
-        %strong #{course.subject}
-      %p
-        Topic:
-        %strong #{course.topic}
-    .col-xs-6
-      %p= summary_text(course.content)
-    .col-xs-3
+.panel.panel-default
+  .panel-body
+    .col-xs-12.col-sm-11
+      .col-xs-3.col-sm-2.col-md-1
+        = link_to course do
+          = image_tag 'media-placeholder.svg', class: 'media-object', alt: '...'
+      .col-xs-9.col-sm-5.col-md-4.col-lg-3
+        %h3{class: 'media-heading'}
+          = link_to course.title, course
+        %p
+          Subject:
+          %strong #{course.subject}
+        %p
+          Topic:
+          %strong #{course.topic}
+      .col-xs-12.col-md-7.col-lg-8
+        %p= summary_text(course.content)
+    .col-xs-2.col-sm-1
       = link_to 'Edit', edit_course_path(course), class: 'btn btn-default'
-
