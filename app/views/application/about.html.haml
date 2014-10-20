@@ -1,0 +1,8 @@
+.jumbotron
+  %h1
+    = t('app_name')
+  %p.lead
+    = t('about.content')
+  %p
+    = link_to t('about.signup_to_enroll'), new_user_registration_path, class: 'btn btn-lg btn-primary', role: 'button'
+    = link_to t('about.learn_to_contribute'), about_path, class: 'btn btn-lg btn-default', role: 'button'

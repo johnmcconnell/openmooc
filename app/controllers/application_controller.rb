@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
   helper :flash
   def index
   end
+
+  def about
+  end
+
+  def help
+  end
 end

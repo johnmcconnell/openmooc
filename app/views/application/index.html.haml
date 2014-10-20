@@ -1,4 +1,8 @@
-%h1
-  =t('app_name')
+.jumbotron
+  %h1
+    = t('app_name')
+  %p.lead
+    = t('index.content')
   %p
-    =t('index.content')
+    = link_to t('index.search_courses'), courses_path, class: 'btn btn-lg btn-primary', role: 'button'
+    = link_to t('index.about_app'), about_path, class: 'btn btn-lg btn-default', role: 'button'

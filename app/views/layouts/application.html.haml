@@ -34,12 +34,13 @@
               = text_field_tag :query, '', class: 'form-control', placeholder: "#{t('app_name')} 101"
             = submit_tag 'search', class: 'btn btn-default'
           %ul.nav.navbar-nav.navbar-right
-            %li= link_to "Issues", "/#"
-            %li= link_to "About", "/#"
+            %li= link_to 'Help', help_path
+            %li= link_to 'About', about_path
             - if current_user
               %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
-              %li=link_to "Log in", new_user_session_path
+              %li=link_to 'Sign up', new_user_registration_path
+              %li=link_to 'Log in', new_user_session_path
     .container
       .row
         .col-xs-12
