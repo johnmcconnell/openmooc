@@ -16,3 +16,4 @@ Feature: User Password Reset
     Given I am on the reset password page
     When I submit a non user email
     Then I should see no email error
+

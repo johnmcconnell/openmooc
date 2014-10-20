@@ -20,17 +20,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  app_name: "Moocipedia"
+  app_name: 'Moocipedia'
   index:
-    content: "Explore, Learn, Contribute."
-    search_courses: "Search courses"
-    about_app: "Want to learn more?"
+    content: 'Explore, Learn, Contribute.'
+    search_courses: 'Search courses'
+    about_app: 'Want to learn more?'
   about:
     content: >
       was started to allow anyone to enroll and contribute
       to online courses. At Moocipedia, everyone contributes
       to the course content and anyone can take a course.
-      It is through everyone's actions that over time
-      everyone can recieve the education they want.
-    learn_to_contribute: "Learn how to edit and create a course?"
-    signup_to_enroll: "Sign up to enroll in a course"
+      It is through everyone's actions that
+      anyone can receive the education they want.
+    learn_to_contribute: 'Learn how to edit and create a course?'
+    signup_to_enroll: 'Sign up to enroll in a course'

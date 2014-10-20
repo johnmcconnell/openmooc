@@ -1,9 +1,9 @@
 def unregistered_user
-  @unregistered_user ||= build(:unregistered_user)
+  @unregistered_user ||= FactoryGirl.build(:unregistered_user)
 end
 
 def registered_user
-  @registered_user ||= create(:registered_user)
+  @registered_user ||= FactoryGirl.create(:registered_user)
 end
 
 def signup_inputs(user)
@@ -78,7 +78,7 @@ When(/^I enter valid signin credentials$/) do
 end
 
 Then(/^I should be on the main page$/) do
-  expect(page).to have_content('OpenMooc, a truly open University')
+  expect(page).to have_content('Moocipedia Explore, Learn, Contribute.')
 end
 
 Then(/^I should be signed in$/) do

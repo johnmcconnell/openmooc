@@ -218,6 +218,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
+  nokogiri
   pg
   puma
   rails (= 4.1.5)
