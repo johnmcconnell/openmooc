@@ -17,3 +17,14 @@ Feature: User Password Reset
     When I submit a non user email
     Then I should see no email error
 
+  Scenario: Change my password
+    Given I am logged in
+    When I visit the change password page
+    And I change my password
+    Then I should see a change password confirmation
+
+  Scenario: Change my password not logged in
+    Given I am not logged in
+    When I visit the change password page
+    Then I should be the sign up page
+    And I should see I need to signup

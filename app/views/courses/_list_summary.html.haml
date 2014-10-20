@@ -15,5 +15,5 @@
           %strong #{course.topic}
       .col-xs-12.col-md-7.col-lg-8
         %p= summary_text(course.content)
-    .col-xs-2.col-sm-1
+    .col-xs-offset-6.col-xs-2.col-sm-offset-0.col-sm-1
       = link_to 'Edit', edit_course_path(course), class: 'btn btn-default'
