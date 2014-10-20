@@ -1,16 +1,8 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit "Log in"
-= render "users/shared/links"
+.row
+  .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-5.col-md-4
+    .panel.panel-default
+      .panel-body
+        %h2 Log in
+        = render partial: 'form', locals: { resource: resource }
+        = render 'users/shared/links'
+

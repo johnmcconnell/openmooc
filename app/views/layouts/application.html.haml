@@ -43,8 +43,8 @@
               %li=link_to 'Log in', new_user_session_path
     .container
       .row
-        .col-xs-12
-          = render 'layouts/flash_messages'
-          = yield
+        = render 'layouts/flash_messages'
+      .row
+        = yield
       %footer
         %p &copy; #{t('app_name')} 2014
