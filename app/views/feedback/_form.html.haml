@@ -1,13 +1,13 @@
 .panel.panel-default
   .panel-body
     %h3 Enter message
-    = form_tag(feedback_path, method: :post, class: 'form') do
+    = form_for(@feedback, url: feedback_path, class: 'form') do |f|
       .form-group
-        = label_tag(:subject, 'Subject')
-        = text_field_tag(:subject, '', class: 'form-control')
+        = f.label :subject, 'Subject'
+        = f.text_field :subject, class: 'form-control'
       .form-group
-        = label_tag(:message, 'Message')
-        = text_area_tag(:message, '',class: 'form-control', placeholder: 'enter your message')
+        = f.label :message, 'Message'
+        = f.text_area :message, class: 'form-control', placeholder: 'enter your message'
       .form-group
-        = submit_tag('Send feedback', class: 'btn btn-primary btn-large')
+        = f.submit 'Send feedback', class: 'btn btn-primary btn-large'
 

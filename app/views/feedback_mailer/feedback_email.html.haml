@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %p= "#{current_user.email} sent you a message."
+    %p= "#{@user.email} sent you a message."
   %body
-    %p= "#{feedback.message}"
+    %p= "#{@feedback.message}"
 
