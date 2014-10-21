@@ -1,9 +1,9 @@
 def unregistered_user
-  @unregistered_user ||= FactoryGirl.build(:unregistered_user)
+  @session_user ||= FactoryGirl.build(:unregistered_user)
 end
 
 def registered_user
-  @registered_user ||= FactoryGirl.create(:registered_user)
+  @session_user ||= FactoryGirl.create(:registered_user)
 end
 
 def signup_inputs(user)
@@ -17,10 +17,10 @@ def signin_inputs(user)
    Password: user.password }
 end
 
-def change_password_inputs(user)
+def change_password_inputs(user, new_password)
   { 'Current password' => user.password,
-    Password: 'newpassword',
-    'Password confirmation' => 'newpassword' }
+    Password: new_password,
+    'Password confirmation' => new_password }
 end
 
 def reset_password_button_value
@@ -45,6 +45,10 @@ Given(/^I am on the signin page$/) do
   visit('/users/sign_in')
 end
 
+Given(/^I am on the main page$/) do
+  visit('/')
+end
+
 ###### WHEN ######
 
 When(/^I submit a registered email$/) do
@@ -60,7 +64,9 @@ When(/^I visit the change password page$/) do
 end
 
 When(/^I change my password$/) do
-  submit_form('Update', change_password_inputs(@session_user))
+  new_password = 'newpassword'
+  submit_form('Update', change_password_inputs(@session_user, new_password))
+  @session_user.password = new_password
 end
 
 When(/^I submit a non user email$/) do
@@ -100,11 +106,16 @@ When(/^I click on reset password$/) do
 end
 
 When(/^I enter valid signin credentials$/) do
+  puts registered_user
   submit_form('Log in', signin_inputs(registered_user))
 end
 
 When(/^I enter invalid signin credentials$/) do
   submit_form('Log in', signin_inputs(unregistered_user))
+end
+
+When(/^I visit the signin page$/) do
+    visit('/users/sign_in')
 end
 
 ###### THEN ######

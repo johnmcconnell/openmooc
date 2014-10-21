@@ -23,7 +23,18 @@ Feature: User Password Reset
     When I change my password
     Then I should see a change password confirmation
 
+  @LoggedIn
+  Scenario: I can log back in
+    Given I am on the change password page
+    When I change my password
+    And I sign out
+    And I visit the signin page
+    And I enter valid signin credentials
+    Then I should be on the main page
+    And I should be signed in
+
   Scenario: Change my password not logged in
+    Given I am on the main page
     When I visit the change password page
     Then I should be the sign up page
     And I should see I need to sign up
