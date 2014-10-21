@@ -106,7 +106,6 @@ When(/^I click on reset password$/) do
 end
 
 When(/^I enter valid signin credentials$/) do
-  puts registered_user
   submit_form('Log in', signin_inputs(registered_user))
 end
 

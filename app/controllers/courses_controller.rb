@@ -34,11 +34,6 @@ class CoursesController < ApplicationController
     respond_with(@course)
   end
 
-  def destroy
-    @course.destroy
-    respond_with(@course)
-  end
-
   private
     def set_course
       @course = Course.find(params[:id])

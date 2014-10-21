@@ -29,8 +29,16 @@ en:
     content: >
       was started to allow anyone to enroll and contribute
       to online courses. At Moocipedia, everyone contributes
-      to the course content and anyone can take a course.
-      It is through everyone's actions that
-      anyone can receive the education they want.
+      to the course and anyone can enroll. It is through
+      everyone's actions that anyone can receive the
+      education they want.
     learn_to_contribute: 'Learn how to contribute to a course?'
     signup_to_enroll: 'Sign up to enroll in a course'
+  help:
+    heading: >
+      Currently, Moocipedia is run by one person, me.
+      I appreciate any suggestions or feature requests.
+      If you are experiencing problems, please submit the
+      form below and I will work to fix them.
+    not_signed_in: 'Sorry, but you must be logged in to submit feedback'
+    ask_developer: 'Are you a developer? Moocipedia is open source.'
