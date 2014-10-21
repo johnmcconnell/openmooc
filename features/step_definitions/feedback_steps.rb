@@ -11,9 +11,9 @@ When(/^I submit a feedback form$/) do
 end
 
 Then(/^I should see a feedback confirmation$/) do
-  expect(page).to have_content('message sent')
+  expect(page).to have_content('Your feedback has been sent')
 end
 
 Then(/^I should see sign in required$/) do
-  expect(page).to have_content('Sorry, but you must be logged in to submit feedback')
+  expect(page).to have_content('Sorry! You must be logged in to submit feedback')
 end

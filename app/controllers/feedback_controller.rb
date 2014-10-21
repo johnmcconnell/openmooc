@@ -7,13 +7,18 @@ class FeedbackController < ApplicationController
     feedback = Feedback.new(feedback_params)
     if feedback.save
       FeedbackMailer.feedback_email(feedback, current_user).deliver
+      flash[:success] = success_message
     else
       flash[:error] = fail_message
     end
-    redirect_to :new
+    redirect_to action: :new
   end
 
   private
+
+  def success_message
+    'Your feedback has been sent'
+  end
 
   def fail_message
     'sorry your feedback could not be submitted'

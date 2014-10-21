@@ -9,6 +9,6 @@ Feature: User feedback
     Then I should see a feedback confirmation
 
   Scenario: Not signed in submit
-    Given I am on the help page
+    Given I am on the feedback page
     Then I should see sign in required
 
