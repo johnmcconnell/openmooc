@@ -17,11 +17,21 @@ def signin_inputs(user)
    Password: user.password }
 end
 
+def change_password_inputs(user)
+  { 'Current password' => user.password,
+    Password: 'newpassword',
+    'Password confirmation' => 'newpassword' }
+end
+
 def reset_password_button_value
   'Reset my password'
 end
 
 ###### GIVEN ######
+
+Given(/^I am on the change password page$/) do
+  visit('/users/edit')
+end
 
 Given(/^I am on the signup page$/) do
   visit('/users/sign_up')
@@ -46,11 +56,11 @@ When(/^I enter existing email signup credentials$/) do
 end
 
 When(/^I visit the change password page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit('/users/edit')
 end
 
 When(/^I change my password$/) do
-  pending # express the regexp above with the code you wish you had
+  submit_form('Update', change_password_inputs(@session_user))
 end
 
 When(/^I submit a non user email$/) do
@@ -152,5 +162,14 @@ Then(/^I should be on the reset password page$/) do
 end
 
 Then(/^I should see a change password confirmation$/) do
-    pending # express the regexp above with the code you wish you had
+    expect(page).to have_content('Your account has been updated successfully')
 end
+
+Then(/^I should be the sign up page$/) do
+  expect(page).to have_content('Sign up')
+end
+
+Then(/^I should see I need to sign up$/) do
+  expect(page).to have_content('You need to sign in or sign up before continuing.')
+end
+

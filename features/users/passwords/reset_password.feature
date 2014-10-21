@@ -20,10 +20,10 @@ Feature: User Password Reset
   @LoggedIn
   Scenario: Change my password
     Given I am on the change password page
-    And I change my password
+    When I change my password
     Then I should see a change password confirmation
 
   Scenario: Change my password not logged in
     When I visit the change password page
     Then I should be the sign up page
-    And I should see I need to signup
+    And I should see I need to sign up

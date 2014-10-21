@@ -1,6 +1,8 @@
+include Warden::Test::Helpers
+
 Before('@LoggedIn') do |scenario|
-  user = FactoryGirl.create(:registered_user)
-  login_as(user, scope: :user)
+  @session_user = FactoryGirl.create(:registered_user)
+  login_as(@session_user, scope: :user)
   Warden.test_mode!
 end
 
