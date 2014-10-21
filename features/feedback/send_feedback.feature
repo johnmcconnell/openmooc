@@ -4,7 +4,7 @@ Feature: User feedback
 
   @LoggedIn
   Scenario: I submit a suggestion
-    Given I am on the help page
+    Given I am on the feedback page
     When I submit a feedback form
     Then I should see a feedback confirmation
 
