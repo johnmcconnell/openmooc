@@ -5,5 +5,5 @@ Moocipedia
 
 License
 -------
-Moocipedia is released under the [GNU v2 License]
+Moocipedia is released under the [GNU Affero License]
 (https://github.com/johnmcconnell/openmooc/blob/master/LICENSE).
