@@ -2,8 +2,8 @@ def feedback_form
   { Subject: 'Feedback',
     Message: 'This is my feedback suggestion' }
 end
-Given(/^I am on the help page$/) do
-  visit('/help')
+Given(/^I am on the feedback page$/) do
+  visit('/feedback')
 end
 
 When(/^I submit a feedback form$/) do
