@@ -1,3 +1,5 @@
+require 'warden'
+
 include Warden::Test::Helpers
 
 Before('@LoggedIn') do |scenario|

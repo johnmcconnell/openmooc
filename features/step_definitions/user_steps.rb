@@ -6,13 +6,13 @@ def registered_user
   @session_user ||= FactoryGirl.create(:registered_user)
 end
 
-def signup_inputs(user)
+def sign_up_inputs(user)
   { Email: user.email,
     Password: user.password,
     'Password confirmation' => user.password }
 end
 
-def signin_inputs(user)
+def sign_in_inputs(user)
  { Email: user.email,
    Password: user.password }
 end
@@ -30,23 +30,19 @@ end
 ###### GIVEN ######
 
 Given(/^I am on the change password page$/) do
-  visit('/users/edit')
+  visit(edit_user_registration_path)
 end
 
-Given(/^I am on the signup page$/) do
-  visit('/users/sign_up')
+Given(/^I am on the sign up page$/) do
+  visit(new_user_registration_path)
 end
 
 Given(/^I am on the reset password page$/) do
-  visit('/users/password/new')
+  visit(new_user_password_path)
 end
 
-Given(/^I am on the signin page$/) do
-  visit('/users/sign_in')
-end
-
-Given(/^I am on the main page$/) do
-  visit('/')
+Given(/^I am on the sign in page$/) do
+  visit(new_user_session_path)
 end
 
 ###### WHEN ######
@@ -55,12 +51,12 @@ When(/^I submit a registered email$/) do
   submit_form(reset_password_button_value, Email: registered_user.email)
 end
 
-When(/^I enter existing email signup credentials$/) do
-  submit_form('Sign up', signup_inputs(registered_user))
+When(/^I enter existing email sign up credentials$/) do
+  submit_form('Sign up', sign_up_inputs(registered_user))
 end
 
 When(/^I visit the change password page$/) do
-  visit('/users/edit')
+  visit(edit_user_password_path)
 end
 
 When(/^I change my password$/) do
@@ -73,28 +69,24 @@ When(/^I submit a non user email$/) do
   submit_form(reset_password_button_value, Email: unregistered_user.email)
 end
 
-When(/^I enter valid signup credentials$/) do
-  submit_form('Sign up', signup_inputs(unregistered_user))
+When(/^I enter valid sign up credentials$/) do
+  submit_form('Sign up', sign_up_inputs(unregistered_user))
 end
 
-When(/^I enter bad email signup credentials$/) do
+When(/^I enter bad email sign up credentials$/) do
   user = unregistered_user
   user.email = 'real%3&@bad$#@.com'
-  submit_form('Sign up', signup_inputs(user))
+  submit_form('Sign up', sign_up_inputs(user))
 end
 
-When(/^I enter bad password signup credentials$/) do
+When(/^I enter bad password sign up credentials$/) do
   user = unregistered_user
   user.password = '1234'
-  submit_form('Sign up', signup_inputs(user))
+  submit_form('Sign up', sign_up_inputs(user))
 end
 
 When(/^I leave the site$/) do
   visit('http://www.google.com')
-end
-
-When(/^I visit the main page$/) do
-  visit('')
 end
 
 When(/^I sign out$/) do
@@ -105,62 +97,26 @@ When(/^I click on reset password$/) do
   click_link('Forgot your password?')
 end
 
-When(/^I enter valid signin credentials$/) do
-  submit_form('Log in', signin_inputs(registered_user))
+When(/^I enter valid sign in credentials$/) do
+  submit_form('Log in', sign_in_inputs(registered_user))
 end
 
-When(/^I enter invalid signin credentials$/) do
-  submit_form('Log in', signin_inputs(unregistered_user))
+When(/^I enter invalid sign in credentials$/) do
+  submit_form('Log in', sign_in_inputs(unregistered_user))
 end
 
-When(/^I visit the signin page$/) do
-    visit('/users/sign_in')
+When(/^I visit the sign in page$/) do
+    visit(new_user_session_path)
 end
 
 ###### THEN ######
 
-Then(/^I should be on the signin page$/) do
-  expect(page).to have_content('Log in')
-end
-
-Then(/^I should see invalid username\/password error$/) do
-  expect(page).to have_content('Invalid email address or password')
-end
-
-Then(/^I should see reset password link$/) do
-  expect(page).to have_selector(:link_or_button, 'Forgot your password?')
+Then(/^I should be on the sign in page$/) do
+  expect(current_path).to eq(new_user_session_path)
 end
 
 Then(/^I should not be signed in$/) do
   expect(page).to have_selector(:link_or_button, 'Log in')
-end
-
-Then(/^I should see an existing user signup error$/) do
-  expect(page).to have_content('Email has already been taken')
-end
-
-Then(/^I should see no email error$/) do
-  expect(page).to have_content('Email not found')
-end
-
-Then(/^I should be on the signup confirmation page$/) do
-  expect(page).to have_content('A message with a confirmation link has been sent to your email address')
-end
-
-Then(/^I should see an email signup error$/) do
-  expect(page).to have_content('Email is invalid')
-end
-
-Then(/^I should see a password signup error$/) do
-  expect(page).to have_content('Password is too short')
-end
-
-Then(/^I should see reset confirmation$/) do
-  expect(page).to have_content('You will receive a password reset email in a few minutes')
-end
-
-Then(/^I should be on the main page$/) do
-  expect(page).to have_content('Moocipedia Explore, Learn, Contribute.')
 end
 
 Then(/^I should be signed in$/) do
@@ -168,18 +124,17 @@ Then(/^I should be signed in$/) do
 end
 
 Then(/^I should be on the reset password page$/) do
-  expect(page).to have_content('Forgot your password?')
+  expect(current_path).to eq(new_user_password_path)
 end
 
-Then(/^I should see a change password confirmation$/) do
-    expect(page).to have_content('Your account has been updated successfully')
+Then(/^I should be on the sign up page$/) do
+  expect(current_path).to eq(new_user_registration_path)
 end
 
-Then(/^I should be the sign up page$/) do
-  expect(page).to have_content('Sign up')
+Then(/^I should be on the sign in page$/) do
+    pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should see I need to sign up$/) do
-  expect(page).to have_content('You need to sign in or sign up before continuing.')
+Then(/^I should be on the sign up confirmation page$/) do
+    pending # express the regexp above with the code you wish you had
 end
-
