@@ -131,10 +131,6 @@ Then(/^I should be on the sign up page$/) do
   expect(current_path).to eq(new_user_registration_path)
 end
 
-Then(/^I should be on the sign in page$/) do
-    pending # express the regexp above with the code you wish you had
-end
-
 Then(/^I should be on the sign up confirmation page$/) do
     pending # express the regexp above with the code you wish you had
 end

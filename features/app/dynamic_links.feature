@@ -12,4 +12,4 @@ Feature: As a user I would like for links to only be
     on about page
     Given I am on the about page
     When I click "Sign up to enroll in a course"
-    Then I should be on the signup page
+    Then I should be on the sign up page

@@ -36,5 +36,5 @@ Feature: User Password Reset
   Scenario: Change my password not logged in
     Given I am on the main page
     When I visit the change password page
-    Then I should be the sign in page
-    And I should see "I need to sign up"
+    Then I should be on the sign in page
+    And I should see "You can't access this page without coming from a password reset email"

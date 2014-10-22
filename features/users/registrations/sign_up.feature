@@ -4,7 +4,8 @@ Feature: User sign up
   Scenario: Singup a good user
     Given I am on the sign up page
     When I enter valid sign up credentials
-    Then I should be on the sign up confirmation page
+    Then I should be on the main page
+    And I should see "A message with a confirmation link has been sent to your email address"
 
   Scenario: sign up a bad email user
     Given I am on the sign up page
