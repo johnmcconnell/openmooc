@@ -4,6 +4,9 @@
     = t('help.heading')
   %p
     = t('help.content')
-  = link_to 'Send feedback', feedback_path, class: 'btn btn-lg btn-primary'
+  - if user_signed_in?
+    = link_to 'Send feedback', feedback_path, class: 'btn btn-lg btn-primary'
+  - else
+    = link_to 'Sign in to send feedback', new_user_session_path, class: 'btn btn-lg btn-primary'
   %p
     = t('help.ask_developer')

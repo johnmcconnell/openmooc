@@ -11,4 +11,3 @@ Feature: User feedback
   Scenario: Not signed in submit
     Given I am on the feedback page
     Then I should see sign in required
-
