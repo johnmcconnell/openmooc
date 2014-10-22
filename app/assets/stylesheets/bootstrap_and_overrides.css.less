@@ -1,6 +1,7 @@
+@import "twitter/bootstrap/bootstrap";
 @import "flash";
 @import "input";
-@import "twitter/bootstrap/bootstrap";
+@import "headings";
 
 // Set the correct sprite paths
 @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
@@ -19,26 +20,29 @@
 
 
 // Glyphicons
-//@import "twitter/bootstrap/glyphicons.less";
-
-// Your custom LESS stylesheets goes here
-//
-// Since bootstrap was imported above you have access to its mixins which
-// you may use and inherit here
-//
-// If you'd like to override bootstrap's own variables, you can do so here as well
-// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
-//
-// Example:
+@import "twitter/bootstrap/glyphicons.less";
 
 // variables and overrides
 
-@dark-brand-color: #339;
-@light-brand-color: #33C;
-@black-color: #FFF;
+// Colors
+@orange: #FFF;
+@purple: #339;
+@gray-lightest: lighten(@gray-base, 100%);
 
-@brand-primary: @dark-brand-color;
+@brand-1-color: @purple;
+@brand-2-color: @orange;
+
+@brand-primary: @brand-1-color;
 @grid-float-breakpoint: @screen-desktop;
+
+// Jumbotron
+
+@jumbotron-bg: @gray-lightest;
+
+// Navbar
+
+@navbar-default-color: @brand-2-color;
+@navbar-default-bg: @gray-base;
 
 // styling
 
