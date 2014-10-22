@@ -25,9 +25,9 @@
 // variables and overrides
 
 // Colors
-@orange: #FFF;
+@orange: #FA2;
 @purple: #339;
-@gray-lightest: lighten(@gray-base, 100%);
+@gray-pure: lighten(@gray-base, 100%);
 
 @brand-1-color: @purple;
 @brand-2-color: @orange;
@@ -37,14 +37,17 @@
 
 // Jumbotron
 
-@jumbotron-bg: @gray-lightest;
+@jumbotron-bg: @gray-pure;
+@jumbotron-heading-color: @brand-1-color;
 
 // Navbar
 
-@navbar-default-color: @brand-2-color;
+@navbar-default-color: @gray-pure;
 @navbar-default-bg: @gray-base;
+@navbar-default-link-color: @gray-pure;
+@navbar-default-link-hover-color: darken(@navbar-default-link-color, 10%);
 
-// styling
+// Styling
 
 a.btn-primary:visited {
   color: #FFF;

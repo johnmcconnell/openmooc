@@ -1,8 +1,8 @@
-%h1=@course.title
-%b Subject:
-= @course.subject
-%b Topic:
-= @course.topic
-%b
-.well
-  = raw parse_wiki(@course.content)
+.page-heading
+  %h1
+    = @course.title
+    .small
+      Subject: #{@course.subject} Topic: #{@course.topic}
+.panel.panel-primary
+  .panel-body
+    = raw parse_wiki(@course.content)
