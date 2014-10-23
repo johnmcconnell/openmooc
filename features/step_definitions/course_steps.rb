@@ -1,9 +1,9 @@
 def course
-  @course ||= create(:course)
+  @course ||= FactoryGirl.create(:course)
 end
 
 def new_course
-  @new_course ||= build(:new_course)
+  @new_course ||= FactoryGirl.build(:new_course)
 end
 
 Given(/^I am on an edit course page$/) do

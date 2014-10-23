@@ -2,10 +2,18 @@
 
 FactoryGirl.define do
   factory :course do
-    id 1
-    title "MyString"
-    subject "MyString"
-    topic "MyString"
-    content "MyText"
+    sequence :id
+    title "Test Title"
+    subject "Test Subject"
+    topic "Test Topic"
+    description "Test Description"
+    page 
+
+    factory :new_course do
+      title "New Title"
+      subject "New Subject"
+      topic "New Topic"
+      description "Test Description"
+    end
   end
 end
