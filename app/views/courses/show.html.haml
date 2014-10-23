@@ -2,7 +2,9 @@
   %h1
     = @course.title
     .small
-      Subject: #{@course.subject} Topic: #{@course.topic}
+      Subject: #{@course.subject}
+      %br/
+      Topic: #{@course.topic}
 .panel.panel-primary
   .panel-body
     = raw parse_wiki(@course.content)

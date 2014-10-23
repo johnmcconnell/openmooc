@@ -23,7 +23,7 @@ en:
   app_name: 'Moocipedia'
   index:
     content: 'Explore, Learn, Contribute.'
-    search_courses: 'Search courses'
+    view_courses: 'View courses'
     about_app: 'Want to learn more?'
   about:
     content: >
