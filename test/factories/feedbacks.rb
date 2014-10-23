@@ -3,7 +3,15 @@
 FactoryGirl.define do
   factory :feedback do
     user nil
-    subject "MyString"
-    message "MyText"
+    subject "subject"
+    message "message"
+
+    factory :no_subject_feedback do
+      subject ""
+    end
+
+    factory :no_message_feedback do
+      subject ""
+    end
   end
 end
