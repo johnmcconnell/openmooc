@@ -14,6 +14,6 @@
           Topic:
           %strong #{course.topic}
       .col-xs-12.col-md-7.col-lg-8
-        %p= summary_text(course.content)
+        %p= course.description
     .col-xs-2.col-md-1
       = link_to 'Preview', course, class: 'btn btn-default'

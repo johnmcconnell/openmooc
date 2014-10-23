@@ -7,6 +7,6 @@
         Topic: #{@course.topic}
   .panel.panel-primary
     .panel-body
-      = raw parse_wiki(@course.content)
+      = (@course.page.nil?) ? "" : raw render_wiki(@course.landing_page.content)
 .col-xs-12.col-md-2
   = render partial: 'menu', locals: { course: @course }

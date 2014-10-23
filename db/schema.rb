@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021220333) do
+ActiveRecord::Schema.define(version: 20141023205015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20141021220333) do
     t.string   "title"
     t.string   "subject"
     t.string   "topic"
-    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.integer  "page_content_id"
   end
 
   create_table "feedbacks", force: true do |t|
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20141021220333) do
   end
 
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
+
+  create_table "page_contents", force: true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
