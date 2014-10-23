@@ -1,10 +1,12 @@
-.page-heading
-  %h1
-    = @course.title
-    .small
-      Subject: #{@course.subject}
-      %br/
-      Topic: #{@course.topic}
-.panel.panel-primary
-  .panel-body
-    = raw parse_wiki(@course.content)
+.col-xs-12.col-md-10.col-lg-8
+  .page-heading
+    %h1
+      = @course.title
+      .small
+        Subject: #{@course.subject}
+        Topic: #{@course.topic}
+  .panel.panel-primary
+    .panel-body
+      = raw parse_wiki(@course.content)
+.col-xs-12.col-md-2
+  = render partial: 'menu', locals: { course: @course }
