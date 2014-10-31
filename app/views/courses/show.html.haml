@@ -5,8 +5,9 @@
       .small
         Subject: #{@course.subject}
         Topic: #{@course.topic}
+    %p= @course.description
   .panel.panel-primary
     .panel-body
-      = (@course.page.nil?) ? "" : raw render_wiki(@course.landing_page.content)
+      = @course.landing_page
 .col-xs-12.col-md-2
   = render partial: 'menu', locals: { course: @course }

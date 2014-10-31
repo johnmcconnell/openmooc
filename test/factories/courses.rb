@@ -7,13 +7,12 @@ FactoryGirl.define do
     subject "Test Subject"
     topic "Test Topic"
     description "Test Description"
-    page 
 
     factory :new_course do
       title "New Title"
       subject "New Subject"
       topic "New Topic"
-      description "Test Description"
+      description "New Description"
     end
   end
 end

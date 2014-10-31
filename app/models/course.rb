@@ -1,3 +1,4 @@
 class Course < ActiveRecord::Base
-  has_one :content_page, class_name: 'PageContent'
+  has_one :landing_page, class_name: 'PageContent'
+  validates_length_of :description, maximum: 400
 end

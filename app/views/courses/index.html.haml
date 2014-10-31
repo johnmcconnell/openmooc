@@ -8,8 +8,6 @@
       .row
         = render partial: 'list_summary', locals: { course: course }
 .row
-  = link_to new_course_path do
-    %button{type: 'button', class: 'btn btn-default btn-lg'}
-      Add course
-      %span{class: 'glyphicon glyphicon-plus'}
-
+  = link_to new_course_path, class: 'btn btn-lg btn-default', role: 'button' do
+    Add course
+    %span.glyphicon.glyphicon-plus

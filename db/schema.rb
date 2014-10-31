@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20141023205015) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.integer  "page_content_id"
   end
 
   create_table "feedbacks", force: true do |t|
@@ -40,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141023205015) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
   end
 
   create_table "users", force: true do |t|

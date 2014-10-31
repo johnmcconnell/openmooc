@@ -10,7 +10,8 @@
       = f.label :topic
       = f.text_field :topic, class: 'form-control'
   .col-xs-12.col-sm-8.col-md-7
-    = f.text_area :content, class: 'form-control', rows: '25'
+    = f.label :description
+    = f.text_area :description, class: 'form-control', rows: '5', maxlength: 400
     = link_to 'Cancel', @course, class: 'btn btn-default'
     = f.submit 'Save', class: 'btn btn-default'
     = f.submit 'Preview', name: 'preview', class: 'btn btn-primary'
