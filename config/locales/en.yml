@@ -20,14 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  app_name: 'Moocipedia'
+  app_name: &app_name 'Moocipedia'
   index:
     content: 'Explore, Learn, Contribute.'
     view_courses: 'View courses'
     about_app: 'Want to learn more?'
   about:
     content: >
-      was started to allow anyone to enroll and contribute
+      Moocipedia was started to allow anyone to enroll and contribute
       to online courses. At Moocipedia, everyone contributes
       to the course and anyone can enroll. It is through
       everyone's actions that anyone can receive the
@@ -40,7 +40,7 @@ en:
       If you are experiencing problems or have suggestions,
       please click the link below and submit the form.
     content: >
-      Currently, Moocipedia is run by one person me. I am
+      Currently, Moocipedia is run by John McConnell. I am
       working hard to provide new features. Please don't
       hesitate to send suggestions.
     ask_developer: 'Are you a developer? Moocipedia is open source.'
