@@ -44,11 +44,8 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      course_params = params.require(:course)
-        .permit(:title, :subject, :topic, :description, :page_content)
-      if !course_params[:page_content].nil?
-        course_params[:page_content] = new_page_content(course_params)
-      end
-      course_params
+      params.require(:course)
+        .permit(:title, :subject, :topic, :description,
+               page_content_attributes: [:content])
     end
 end

@@ -1,11 +1,7 @@
 .col-xs-12.col-md-10.col-lg-8
-  .page-heading
+  .page-header
     %h1
       = @course.title
-      .small
-        Subject: #{@course.subject}
-        Topic: #{@course.topic}
-    %p= @course.description
   .panel.panel-primary
     .panel-body
       = @course.page_content

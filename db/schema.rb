@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20141023205015) do
 
   create_table "page_contents", force: true do |t|
     t.text     "content"
+    t.text     "html"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_id"
