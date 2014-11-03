@@ -35,12 +35,9 @@ class CoursesController < ApplicationController
   end
 
   private
+
     def set_course
       @course = Course.find(params[:id])
-    end
-
-    def new_page_content(course_params)
-      PageContent.new(content: course_params[:page_content])
     end
 
     def course_params
