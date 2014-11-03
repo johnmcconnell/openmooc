@@ -8,6 +8,6 @@
     %p= @course.description
   .panel.panel-primary
     .panel-body
-      = @course.landing_page
+      = @course.page_content
 .col-xs-12.col-md-2
   = render partial: 'menu', locals: { course: @course }
