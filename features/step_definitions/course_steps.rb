@@ -30,7 +30,5 @@ Then(/^I should be on the courses page$/) do
 end
 
 Then(/^I should see the new course information$/) do
-  course_to_params(new_course).each do |key, value|
-    expect(page).to have_content(value)
-  end
+  expect(page).to have_content(new_course.title)
 end
