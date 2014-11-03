@@ -7,6 +7,6 @@ class Course < ActiveRecord::Base
   private
 
   def set_content
-    self.page_content ||= PageContent.new
+    self.page_content ||= PageContent.new(content: "")
   end
 end
