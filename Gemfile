@@ -48,11 +48,11 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'puma'
 gem 'redcarpet'
-gem 'bitbucket_rest_api'
 
 group :test do
   gem 'cucumber-rails', require: false
   gem 'rspec-expectations'
+#  gem 'rspec-collection_matchers'
   gem 'database_cleaner'
 end
 

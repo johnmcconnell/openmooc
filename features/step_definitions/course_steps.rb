@@ -17,6 +17,10 @@ Given(/^I am on an edit course page$/) do
     visit(edit_course_path(course))
 end
 
+Given(/^I am on the edit sections page$/) do
+    visit(edit_sections_course_path(course))
+end
+
 Given(/^I am on the courses page$/) do
     visit(courses_path)
 end

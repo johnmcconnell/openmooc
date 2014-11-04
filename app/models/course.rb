@@ -1,12 +1,14 @@
 class Course < ActiveRecord::Base
-  has_one :page_content
+  belongs_to :page_content
+  has_many :sections
   validates_length_of :description, maximum: 400
   accepts_nested_attributes_for :page_content
-  after_initialize :set_content
+  after_initialize :init
 
   private
 
-  def set_content
+  def init
     self.page_content ||= PageContent.new(content: "")
+    self.sections ||= []
   end
 end

@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023205015) do
+ActiveRecord::Schema.define(version: 20141103232121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: true do |t|
+    t.string   "type"
+    t.integer  "section_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["section_id"], name: "index_activities_on_section_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -23,7 +33,10 @@ ActiveRecord::Schema.define(version: 20141023205015) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.integer  "page_content_id"
   end
+
+  add_index "courses", ["page_content_id"], name: "index_courses_on_page_content_id", using: :btree
 
   create_table "feedbacks", force: true do |t|
     t.integer  "user_id"
@@ -35,13 +48,32 @@ ActiveRecord::Schema.define(version: 20141023205015) do
 
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
+  create_table "lesson_activities", force: true do |t|
+    t.integer  "activity_id"
+    t.integer  "page_content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lesson_activities", ["activity_id"], name: "index_lesson_activities_on_activity_id", using: :btree
+  add_index "lesson_activities", ["page_content_id"], name: "index_lesson_activities_on_page_content_id", using: :btree
+
   create_table "page_contents", force: true do |t|
     t.text     "content"
     t.text     "html"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "course_id"
   end
+
+  create_table "sections", force: true do |t|
+    t.string   "name"
+    t.integer  "course_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sections", ["course_id"], name: "index_sections_on_course_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

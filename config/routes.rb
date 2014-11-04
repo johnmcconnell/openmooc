@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :courses, except: [ :delete ]
+  resources :courses, except: [ :delete ] do
+    member do
+      get 'edit_sections'
+      patch 'add_section'
+    end
+  end
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'
