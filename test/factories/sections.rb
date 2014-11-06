@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :new_section, class: Section do
-    name 'New Section'
+    name 'User Created Section Name'
   end
 end

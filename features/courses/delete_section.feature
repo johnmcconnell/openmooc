@@ -7,4 +7,5 @@ Feature: As a user I would like to add
     And I enter new section information
     And I click "Update Course"
     And I click "Delete"
-    Then I should not see a new section on the course page
+    Then I should be on the edit sections page
+    And I should not see new section info

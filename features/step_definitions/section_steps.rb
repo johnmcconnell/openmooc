@@ -14,7 +14,7 @@ Then(/^I should see a new section on the course page$/) do
   expect(page).to have_content(new_section.name)
 end
 
-Then(/^I should not see a new section on the course page$/) do
+Then(/^I should not see new section info$/) do
   expect(page).not_to have_content(new_section.name)
 end
 

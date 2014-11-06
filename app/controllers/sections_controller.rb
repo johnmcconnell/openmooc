@@ -11,7 +11,7 @@ class SectionsController < ApplicationController
 
   def destroy
     @section.delete
-    respond_with(@section.course)
+    redirect_to edit_sections_course_path(@section.course)
   end
 
   def update

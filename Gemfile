@@ -52,7 +52,7 @@ gem 'redcarpet'
 group :test do
   gem 'cucumber-rails', require: false
   gem 'rspec-expectations'
-#  gem 'rspec-collection_matchers'
+  gem 'rspec-collection_matchers'
   gem 'database_cleaner'
 end
 

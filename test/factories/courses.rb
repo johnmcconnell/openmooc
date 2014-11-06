@@ -8,6 +8,10 @@ FactoryGirl.define do
     topic "Test Topic"
     description "Test Description"
 
+    factory :course_with_sections do
+        sections { create_list(:new_section, 3) }
+    end
+
     factory :new_course do
       title "New Title"
       subject "New Subject"

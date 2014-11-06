@@ -6,12 +6,22 @@ def new_course
   @new_course ||= FactoryGirl.build(:new_course)
 end
 
+def course_with_sections
+  @course ||= FactoryGirl.create(:course_with_sections)
+end
+
 def course_to_params(course)
   course.slice(:title, :description, :subject, :topic)
   .inject({}) do |params, (key, value)|
     params.tap { |p| p[key.capitalize] = value }
   end
 end
+
+##### GIVEN #####
+Given(/^The course has sections$/) do
+  course_with_sections
+end
+
 Given(/^I am on a course page$/) do
     visit(course_path(course))
 end
@@ -42,4 +52,10 @@ end
 
 Then(/^I should be on the edit sections page$/) do
   expect(current_path).to eq(edit_sections_course_path(course))
+end
+
+Then(/^I should see section links$/) do
+  course_with_sections.sections.each do |section|
+    expect(page).to have_content(section.name)
+  end
 end
