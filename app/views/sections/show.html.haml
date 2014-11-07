@@ -2,6 +2,24 @@
   .page-header
     %h1
       = @section.name
-  .panel.panel-primary
-    .panel-body
-      = @section.activities.first.page_content
+  - if @section.activities.empty?
+    There are no activities!
+    %button.btn.btn-default{ 'data-toggle' => 'modal', 'data-target' => '#add_activity_modal' }
+      Click to add a new activity
+  - else
+    = @section.activities.first.page_content
+.modal.fade{ id: 'add_activity_modal', tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add activity', 'aria-hidden' => true }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{ type: 'button', 'data-dismiss' => 'modal'}
+          %span{ 'aria-hidden' => true } &times;
+          %span.sr-only Close
+        %h4.modal-title New Activity
+      = form_for @section, url: '#' do |f|
+        .modal-body
+          .btn.btn-primary Content Activity
+          %span or
+          .btn.btn-primary Quiz Actiivty
+        .modal-footer
+          %button.btn.btn-default{ type: 'button', 'data-dismiss' => 'modal'} Cancel
