@@ -35,6 +35,6 @@ Then(/^I should not see new section info$/) do
 end
 
 Then(/^I should see new content on the sections page$/) do
-  page_content = easy_html_remove(section.activities.first.page_content.to_s)
+  page_content = easy_html_remove(section.activities.first.page.page_content.to_s)
   expect(page).to have_content(page_content)
 end

@@ -1,15 +1,16 @@
-.col-xs-12.col-md-8
+.col-xs-12
   .page-header
     %h1
       = link_to "#{@section.course.title}:", @section.course
       %br
       = @section.name
+.col-xs-12
   - if @section.activities.empty?
     There are no pages!
     %button.btn.btn-primary{ 'data-toggle' => 'modal', 'data-target' => '#add_activity_modal' }
       Click to add some.
   - else
-    = @section.activities.first.page_content
+    = render @section.activities.first.show_partial
 .modal.fade{ id: 'add_activity_modal', tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add activity', 'aria-hidden' => true }
   .modal-dialog
     .modal-content
@@ -23,4 +24,4 @@
       .modal-footer
         %button.btn.btn-default{ type: 'button', 'data-dismiss' => 'modal'} Cancel
         = link_to 'Add quiz', new_quiz_activity_section_path(@section), class: 'btn btn-default'
-        = link_to 'Add material', new_lesson_activity_section_path(@section), class: 'btn btn-primary'
+        = link_to 'Add material', new_lesson_activity_path(@section), class: 'btn btn-primary'

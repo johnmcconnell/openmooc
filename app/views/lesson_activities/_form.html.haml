@@ -1,4 +1,4 @@
-= form_for @lesson_activity, url: new_lesson_activity_section_path(@lesson_activity.section) do |f|
+= form_for @lesson_activity, url: lesson_activity_path(@lesson_activity.section) do |f|
   = f.fields_for :page_content do |pf|
     .form-group
       = pf.label :content

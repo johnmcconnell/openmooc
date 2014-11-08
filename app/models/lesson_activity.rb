@@ -5,6 +5,10 @@ class LessonActivity < ActiveRecord::Base
   accepts_nested_attributes_for :page_content
   after_initialize :init
 
+  def show_partial
+    { partial: 'lesson_activities/show', locals: { lesson_activity: self } }
+  end
+
   private
 
   def init

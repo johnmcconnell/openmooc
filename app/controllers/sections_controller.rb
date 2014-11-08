@@ -3,7 +3,7 @@ class SectionsController < ApplicationController
   respond_to :html
 
   def show
-    respond_with(@sections)
+    respond_with(@section)
   end
 
   def edit

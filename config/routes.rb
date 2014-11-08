@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   end
   resources :sections, only: [ :show, :destroy ] do
     member do
+      resource :page, only: [ :show ]
+      resource :lesson_activity, only: [ :new, :create ]
       get 'new_quiz_activity'
-      get 'new_lesson_activity', to: 'lesson_activities#new'
-      post 'new_lesson_activity', to: 'lesson_activities#create'
     end
   end
   get 'search/course', to: 'query#course'
