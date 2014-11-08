@@ -6,6 +6,8 @@ class CreateActivities < ActiveRecord::Migration
       t.belongs_to :section, index: true
       t.integer :position
 
+      t.references :page, polymorphic: true, index: true
+
       t.timestamps
     end
   end

@@ -6,8 +6,13 @@ Rails.application.routes.draw do
       patch 'add_section'
     end
   end
-  get 'sections/:id', to: 'sections#show', as: 'section'
-  delete 'sections/:id', to: 'sections#destroy'
+  resources :sections, only: [ :show, :destroy ] do
+    member do
+      get 'new_quiz_activity'
+      get 'new_lesson_activity', to: 'lesson_activities#new'
+      post 'new_lesson_activity', to: 'lesson_activities#create'
+    end
+  end
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'

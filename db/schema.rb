@@ -20,10 +20,13 @@ ActiveRecord::Schema.define(version: 20141103232121) do
     t.string   "type"
     t.integer  "section_id"
     t.integer  "position"
+    t.integer  "page_id"
+    t.string   "page_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "activities", ["page_id", "page_type"], name: "index_activities_on_page_id_and_page_type", using: :btree
   add_index "activities", ["section_id"], name: "index_activities_on_section_id", using: :btree
 
   create_table "courses", force: true do |t|
@@ -49,13 +52,11 @@ ActiveRecord::Schema.define(version: 20141103232121) do
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "lesson_activities", force: true do |t|
-    t.integer  "activity_id"
     t.integer  "page_content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "lesson_activities", ["activity_id"], name: "index_lesson_activities_on_activity_id", using: :btree
   add_index "lesson_activities", ["page_content_id"], name: "index_lesson_activities_on_page_content_id", using: :btree
 
   create_table "page_contents", force: true do |t|

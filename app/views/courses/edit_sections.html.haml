@@ -1,14 +1,16 @@
-.col-xs-6.col-sm-5
+.col-xs-12
   .page-header
     %h1
-      Sections
+      = link_to "#{@course.title}:", @course
+      %br
+        Lessons
 .col-xs-12
 - @course.sections.each do |section|
   .row
     = render partial: 'section_form', locals: { section: section }
 .col-xs-3.col-md-1
   %button.btn.btn-lg.btn-default{ 'data-toggle' => 'modal', 'data-target' => '#add_section_modal' }
-    Add section
+    Add lesson
     %span.glyphicon.glyphicon-plus
 .modal.fade{ id: 'add_section_modal', tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add section', 'aria-hidden' => true }
   .modal-dialog
@@ -17,7 +19,7 @@
         %button.close{ type: 'button', 'data-dismiss' => 'modal'}
           %span{ 'aria-hidden' => true } &times;
           %span.sr-only Close
-        %h4.modal-title New Section
+        %h4.modal-title New Lesson
       = form_for @course, url: add_section_course_path(@course) do |f|
         .modal-body
           = fields_for :section do |sf|

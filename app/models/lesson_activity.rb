@@ -1,4 +1,13 @@
 class LessonActivity < ActiveRecord::Base
-  belongs_to :activity
+  has_one :activity, as: :page
   belongs_to :page_content
+  has_one :section, through: :activity
+  accepts_nested_attributes_for :page_content
+  after_initialize :init
+
+  private
+
+  def init
+    self.page_content ||= PageContent.new(content: "")
+  end
 end

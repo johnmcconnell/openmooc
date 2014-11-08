@@ -3,5 +3,5 @@ Feature: As a user I would like to add
 
   Scenario:
     Given I am on a course page
-    When I click "Edit Sections"
+    When I click "Edit Lessons"
     Then I should be on the edit sections page

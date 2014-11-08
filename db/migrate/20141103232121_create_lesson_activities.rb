@@ -1,7 +1,6 @@
 class CreateLessonActivities < ActiveRecord::Migration
   def change
     create_table :lesson_activities do |t|
-      t.belongs_to :activity, index: true
       t.belongs_to :page_content, index: true
 
       t.timestamps

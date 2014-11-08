@@ -1,0 +1,7 @@
+= form_for @lesson_activity, url: new_lesson_activity_section_path(@lesson_activity.section) do |f|
+  = f.fields_for :page_content do |pf|
+    .form-group
+      = pf.label :content
+      = pf.text_area :content, class: 'form-control', rows: '10', maxlength: 1500
+  = link_to 'Cancel', @lesson_activity.section, class: 'btn btn-default'
+  = f.submit 'Create lesson', class: 'btn btn-primary'
