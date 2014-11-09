@@ -1,0 +1,20 @@
+.col-xs-12.col-md-10.col-lg-8
+  .page-header
+    %h1
+      = link_to "#{@section.course.title}:", @section.course
+      %br
+        = link_to @section.name, @section
+.col-xs-12.col-sm-9.col-md-8.col-lg-6
+  %table.table
+    %tr
+      %th Page #
+      %th Type
+    - @section.activities.each do |activity|
+      %tr
+        %td= link_to activity.position + 1, page_path(activity)
+        %td= link_to activity.page.type, page_path(activity)
+.col-xs-3.col-md-2
+  = render layout: 'page_form_modal' do |modal_id|
+    %button.btn.btn-default{ 'data-toggle' => 'modal', 'data-target' => modal_id }
+      Add page &plus;
+

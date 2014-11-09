@@ -2,6 +2,10 @@ def section
   @section
 end
 
+def section_with_activities
+  @section ||= FactoryGirl.create(:section_with_activities)
+end
+
 def section_of_course
   @section ||= FactoryGirl.create(:course_with_sections).sections.first
 end
@@ -37,4 +41,8 @@ end
 Then(/^I should see new content on the sections page$/) do
   page_content = easy_html_remove(section.activities.first.page.page_content.to_s)
   expect(page).to have_content(page_content)
+end
+
+Then(/^I should see one more lesson page$/) do
+  expect(page).to have_content('2 Lesson material')
 end

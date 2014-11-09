@@ -3,7 +3,11 @@ class SectionsController < ApplicationController
   respond_to :html
 
   def show
-    respond_with(@section)
+    if @section.activities.empty?
+      respond_with(@section)
+    else
+      redirect_to page_path(@section.activities.first)
+    end
   end
 
   def edit

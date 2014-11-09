@@ -6,13 +6,13 @@ Rails.application.routes.draw do
       patch 'add_section'
     end
   end
-  resources :sections, only: [ :show, :destroy ] do
+  resources :sections, only: [ :show, :destroy, :edit ] do
     member do
-      resource :page, only: [ :show ]
       resource :lesson_activity, only: [ :new, :create ]
       get 'new_quiz_activity'
     end
   end
+  resources :pages, only: [ :show ], controller: 'activities'
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'

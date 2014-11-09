@@ -3,7 +3,7 @@ Feature: As a user I would like to add
 
   Scenario:
     Given I am on a course sections page
-    When I click "Click to add some."
+    When I click "Click to add one."
     And I click "Add material"
     And I enter new lesson activity content
     And I click "Create lesson"
