@@ -27,7 +27,7 @@
 .col-xs-8
   .pull-right
     - if @activity.lower_item.nil?
-      Finished!
+      = link_to 'Finish lesson!', @activity.course, class: 'btn btn-primary'
     - else
       = link_to 'Next page', page_path(@activity.lower_item), class: 'btn btn-primary'
 

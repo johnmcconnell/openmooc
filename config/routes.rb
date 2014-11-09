@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
   end
   resources :pages, only: [ :show ], controller: 'activities'
+  resources :lesson_activities, only: [ :edit ]
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'
