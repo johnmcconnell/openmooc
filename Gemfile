@@ -48,6 +48,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'puma'
 gem 'redcarpet'
+gem 'acts_as_list'
 
 group :test do
   gem 'cucumber-rails', require: false

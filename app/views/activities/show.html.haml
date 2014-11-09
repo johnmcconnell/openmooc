@@ -11,7 +11,23 @@
         - @activity.course.sections.each do |section|
           %li{ role: 'presentation' }
             = link_to section.name, section, role: 'menuitem', tabindex: -1
+  %nav
+    %ul.pagination
+      - @activity.section.activities.each do |activity|
+        - if @activity == activity
+          %li.active
+            = link_to activity.page_number, page_path(activity)
+        - else
+          %li
+            = link_to activity.page_number, page_path(activity)
 .col-xs-4
   = render partial: 'menu'
 .col-xs-8
   = render @activity.page
+.col-xs-8
+  .pull-right
+    - if @activity.lower_item.nil?
+      Finished!
+    - else
+      = link_to 'Next page', page_path(@activity.lower_item), class: 'btn btn-primary'
+

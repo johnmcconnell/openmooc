@@ -1,10 +1,11 @@
 class Activity < ActiveRecord::Base
   belongs_to :section
+  acts_as_list scope: :section
   belongs_to :page, polymorphic: true
-  before_save :update_position
   has_one :course, through: :section
 
-  def update_position
-    self.position ||= section.activities.size
+
+  def page_number
+    position
   end
 end
