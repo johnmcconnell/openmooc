@@ -21,3 +21,11 @@ end
 When(/^I enter new lesson activity content$/) do
   enter_form({ 'Content' => 'Hello World!' })
 end
+
+When(/^I enter edited lesson activity content$/) do
+  enter_form({ 'Content' => 'Hello World Again!' })
+end
+
+Then(/^I should see the edited lesson activity content$/) do
+  expect(page).to have_content( 'Hello World Again!')
+end

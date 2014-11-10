@@ -4,4 +4,8 @@
       = pf.label :content
       = pf.text_area :content, class: 'form-control', rows: '10', maxlength: 1500
   = link_to 'Cancel', @lesson_activity.section, class: 'btn btn-default'
-  = f.submit 'Create lesson', class: 'btn btn-primary'
+  - if @lesson_activity.new_record?
+    = f.submit 'Create page', class: 'btn btn-primary'
+  - else
+    = f.submit 'Update page', class: 'btn btn-primary'
+

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :pages, only: [ :show ], controller: 'activities'
   resources :lesson_activities, only: [ :edit ]
+  patch 'lesson_activities/:id', to: 'lesson_activities#update', as: 'update_lesson_activity'
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'
