@@ -47,5 +47,5 @@ en:
   lesson:
     new_page_description: >
       Awesome! You are about to add a new page to the lesson.
-      You must choose whether you want this page to provide a
-      quiz or lesson material.
+      You must choose the type of content you want this page
+      to provide.
