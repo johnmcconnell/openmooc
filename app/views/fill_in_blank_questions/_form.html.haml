@@ -1,0 +1,14 @@
+= nested_form_for @question, url: fill_in_blank_question_path(@section) do |f|
+  = f.fields_for :page_content do |pf|
+    .form-group
+      = pf.label :content, 'Question'
+      = pf.text_area :content, class: 'form-control', rows: '5', maxlength: 150
+  = f.fields_for :answers do |af|
+    - @question.answers.each do |answer|
+      = af.label :text, 'Answer'
+      = af.text_field :text
+      = af.link_to_remove 'Remove answer'
+  = f.link_to_add 'Add answer', :answers
+  %br
+  = link_to 'Cancel', @section, class: 'btn btn-default'
+  = f.submit 'Create quiz', class: 'btn btn-primary'
