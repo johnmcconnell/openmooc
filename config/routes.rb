@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :sections, only: [ :show, :destroy, :edit ] do
     member do
       resource :lesson_activity, only: [ :new, :create ]
-      get 'new_quiz_activity'
+      resource :quiz_activity, only: [ :new, :create ]
+      resource :fill_in_blank_question, only: [ :new, :create ]
     end
   end
   resources :pages, only: [ :show ], controller: 'activities'
