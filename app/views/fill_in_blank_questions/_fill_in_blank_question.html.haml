@@ -1,0 +1,6 @@
+= fill_in_blank_question
+= form_for fill_in_blank_question, url: submit_answer_fill_in_blank_question_path(fill_in_blank_question), method: :post do |f|
+  .form-group
+    = label_tag :answer
+    = text_field_tag :answer, nil, class: 'form-control', placeholder: 'answer...'
+  = submit_tag 'Submit answer', class: 'btn btn-primary'

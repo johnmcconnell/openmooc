@@ -9,9 +9,13 @@ class LessonActivity < ActiveRecord::Base
     'Lesson material'
   end
 
+  def next_page_text
+    'Next page'
+  end
+
   private
 
   def init
-    self.page_content ||= PageContent.new(content: "")
+    self.page_content ||= PageContent.new
   end
 end

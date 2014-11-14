@@ -13,9 +13,17 @@ Rails.application.routes.draw do
       resource :fill_in_blank_question, only: [ :new, :create ]
     end
   end
+  resources :fill_in_blank_questions, only: [ :edit ] do
+    member do
+      post 'submit_answer'
+      patch 'update', as: 'update'
+      put 'update'
+    end
+  end
   resources :pages, only: [ :show ], controller: 'activities'
   resources :lesson_activities, only: [ :edit ]
   patch 'lesson_activities/:id', to: 'lesson_activities#update', as: 'update_lesson_activity'
+  resources :quiz_activities, only: [ :edit ]
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'

@@ -1,8 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :answer do
-    text "MyString"
-    valid false
+  factory :fill_in_blank_answer do
+    text 'Test Answer'
+    fill_in_blank_question nil
   end
 end

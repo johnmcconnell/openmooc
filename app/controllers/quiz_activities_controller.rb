@@ -1,5 +1,6 @@
 class QuizActivitiesController < ApplicationController
   before_action :set_section, only: [ :new, :create ]
+  before_action :set_quiz_activity, only: [ :edit ]
   respond_to :html
 
   def new
@@ -11,6 +12,10 @@ class QuizActivitiesController < ApplicationController
     @quiz_activity.section = @section
     @quiz_activity.save
     redirect_to page_path(@quiz_activity.activity)
+  end
+
+  def edit
+    redirect_to [ :edit, @quiz_activity.question ]
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112040208) do
+ActiveRecord::Schema.define(version: 20141114174800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 20141112040208) do
 
   add_index "activities", ["page_id", "page_type"], name: "index_activities_on_page_id_and_page_type", using: :btree
   add_index "activities", ["section_id"], name: "index_activities_on_section_id", using: :btree
-
-  create_table "answers", force: true do |t|
-    t.string   "text"
-    t.integer  "question_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -60,14 +51,23 @@ ActiveRecord::Schema.define(version: 20141112040208) do
 
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
-  create_table "fill_in_blank_questions", force: true do |t|
-    t.integer  "page_content_id"
-    t.integer  "answer_id"
+  create_table "fill_in_blank_answers", force: true do |t|
+    t.string   "text"
+    t.integer  "fill_in_blank_question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "fill_in_blank_questions", ["answer_id"], name: "index_fill_in_blank_questions_on_answer_id", using: :btree
+  add_index "fill_in_blank_answers", ["fill_in_blank_question_id"], name: "index_fill_in_blank_answers_on_fill_in_blank_question_id", using: :btree
+
+  create_table "fill_in_blank_questions", force: true do |t|
+    t.integer  "page_content_id"
+    t.integer  "fill_in_blank_answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fill_in_blank_questions", ["fill_in_blank_answer_id"], name: "index_fill_in_blank_questions_on_fill_in_blank_answer_id", using: :btree
   add_index "fill_in_blank_questions", ["page_content_id"], name: "index_fill_in_blank_questions_on_page_content_id", using: :btree
 
   create_table "lesson_activities", force: true do |t|

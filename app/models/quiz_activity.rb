@@ -4,6 +4,14 @@ class QuizActivity < ActiveRecord::Base
   has_one :section, through: :activity
   belongs_to :question, polymorphic: true
 
+  def type
+    'Quiz'
+  end
+
+  def next_page_text
+    'Skip quiz'
+  end
+
   def question_types
     QUESTION_TYPES.each_with_index
   end

@@ -29,4 +29,4 @@
     - if @activity.lower_item.nil?
       = link_to 'Finish lesson!', @activity.course, class: 'btn btn-primary'
     - else
-      = link_to 'Next page', page_path(@activity.lower_item), class: 'btn btn-primary'
+      = link_to @activity.page.next_page_text, page_path(@activity.lower_item), class: 'btn btn-primary'

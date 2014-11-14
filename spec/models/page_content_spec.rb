@@ -4,8 +4,8 @@ describe PageContent do
   let(:basic_page) { FactoryGirl.build(:page_content) }
   let(:too_much_page_content) { FactoryGirl.build(:too_much_page_content) }
 
-  describe "#content" do
-    it "stores the content string" do
+  describe '#content' do
+    it 'stores the content string' do
       expect(basic_page.content).to eq('content')
     end
 
@@ -14,8 +14,14 @@ describe PageContent do
      end
   end
 
-  describe "#save" do
-    it "renders markdown and saves in html" do
+  describe '::new' do
+    it 'initializes with empty string' do
+      expect(PageContent.new.content).to eq('')
+    end
+  end
+
+  describe '#save' do
+    it 'renders markdown and saves in html' do
       expect { basic_page.save! }.to change { basic_page.html }.from(nil)
         .to match(/<p>.*<\/p>/)
     end

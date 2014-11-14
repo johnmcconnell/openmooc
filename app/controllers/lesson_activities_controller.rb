@@ -15,7 +15,7 @@ class LessonActivitiesController < ApplicationController
     @lesson_activity = LessonActivity.new(lesson_activity_params)
     @lesson_activity.section = @section
     @lesson_activity.save
-    redirect_to section_path(@lesson_activity.section)
+    redirect_to page_path(@lesson_activity.activity)
   end
 
   def update
