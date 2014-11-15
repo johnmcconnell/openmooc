@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :fill_in_blank_question do
-    page_content PageContent.new
+    page_content
     answers []
 
     factory :fill_in_blank_question_with_answers do
