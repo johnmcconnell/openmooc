@@ -24,14 +24,24 @@ class FillInBlankQuestionsController < ApplicationController
 
   def submit_answer
     if @question.correct_answer?(@answer_submission)
-      flash[:success] = 'Good Job!'
+      flash[:success] = 'Great Job!'
+      redirect_to next_page_url(@question)
     else
-      flash[:danger] = 'Incorrect!'
+      flash[:danger] = 'Try again!'
+      redirect_to page_url(@question.quiz_activity.activity)
     end
-    redirect_to page_path(@question.quiz_activity.activity)
   end
 
   private
+
+  def next_page_url(question)
+    lower_item = question.quiz_activity.activity.lower_item
+    if lower_item.nil?
+      course_path(question.quiz_activity.activity.course)
+    else
+      page_path(lower_item)
+    end
+  end
 
   def set_question
     id = params[:id]
