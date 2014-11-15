@@ -6,7 +6,6 @@ Feature: As a user I would like to add
     When I click "Click to add one"
     And I click "Add quiz"
     And I select fill in the blank question
-    And I click "Create question"
     And I enter new fill in the blank question content
     And I click "Create question"
     Then I should see a new quiz page
