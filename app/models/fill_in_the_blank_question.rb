@@ -1,7 +1,8 @@
-class FillInBlankQuestion < ActiveRecord::Base
+class FillInTheBlankQuestion < ActiveRecord::Base
+  self.table_name = 'fitb_questions'
   has_one :quiz_activity, as: :question
   belongs_to :page_content
-  has_many :answers, class_name: 'FillInBlankAnswer'
+  has_many :answers, class_name: 'FillInTheBlankAnswer'
   has_one :activity, through: :quiz_activity
   has_one :section, through: :activity
   accepts_nested_attributes_for :answers
@@ -9,7 +10,7 @@ class FillInBlankQuestion < ActiveRecord::Base
   after_initialize :init
 
   def init
-    answers << FillInBlankAnswer.new if answers.empty?
+    answers << FillInTheBlankAnswer.new if answers.empty?
     self.page_content ||= PageContent.new
   end
 

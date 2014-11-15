@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FillInBlankQuestion, :type => :model do
+RSpec.describe FillInTheBlankQuestion, :type => :model do
   subject(:test_question) do
     FactoryGirl.build(:fill_in_blank_question_with_answers)
   end
@@ -9,7 +9,7 @@ RSpec.describe FillInBlankQuestion, :type => :model do
     it 'creates a blank answer upon initialization' do
       expect(described_class.new.page_content).to be_a PageContent
       expect(described_class.new).to have(1).answer
-      expect(described_class.new.answers.first).to be_a FillInBlankAnswer
+      expect(described_class.new.answers.first).to be_a FillInTheBlankAnswer
     end
   end
 

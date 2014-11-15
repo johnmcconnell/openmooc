@@ -51,24 +51,24 @@ ActiveRecord::Schema.define(version: 20141114174800) do
 
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
-  create_table "fill_in_blank_answers", force: true do |t|
+  create_table "fitb_answers", force: true do |t|
     t.string   "text"
-    t.integer  "fill_in_blank_question_id"
+    t.integer  "fitb_question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "fill_in_blank_answers", ["fill_in_blank_question_id"], name: "index_fill_in_blank_answers_on_fill_in_blank_question_id", using: :btree
+  add_index "fitb_answers", ["fitb_question_id"], name: "index_fitb_answers_on_fitb_question_id", using: :btree
 
-  create_table "fill_in_blank_questions", force: true do |t|
+  create_table "fitb_questions", force: true do |t|
     t.integer  "page_content_id"
-    t.integer  "fill_in_blank_answer_id"
+    t.integer  "fitb_answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "fill_in_blank_questions", ["fill_in_blank_answer_id"], name: "index_fill_in_blank_questions_on_fill_in_blank_answer_id", using: :btree
-  add_index "fill_in_blank_questions", ["page_content_id"], name: "index_fill_in_blank_questions_on_page_content_id", using: :btree
+  add_index "fitb_questions", ["fitb_answer_id"], name: "index_fitb_questions_on_fitb_answer_id", using: :btree
+  add_index "fitb_questions", ["page_content_id"], name: "index_fitb_questions_on_page_content_id", using: :btree
 
   create_table "lesson_activities", force: true do |t|
     t.integer  "page_content_id"

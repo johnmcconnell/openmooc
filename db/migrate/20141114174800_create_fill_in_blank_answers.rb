@@ -1,8 +1,8 @@
 class CreateFillInBlankAnswers < ActiveRecord::Migration
   def change
-    create_table :fill_in_blank_answers do |t|
+    create_table :fitb_answers do |t|
       t.string :text
-      t.belongs_to :fill_in_blank_question, index: true
+      t.belongs_to :fitb_question, index: true
 
       t.timestamps
     end
