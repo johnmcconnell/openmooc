@@ -3,13 +3,10 @@
 FactoryGirl.define do
   factory :page do
     type ""
-    section nil
-    position 1
+    section
 
     factory :page_with_fill_in_the_blank_question do
-      association :section, factory: :new_section
-
-      association :page, factory: :quiz_activity_with_fill_in_blank_question
+      association :activity, factory: :quiz_activity_with_fill_in_the_blank_question
     end
   end
 end

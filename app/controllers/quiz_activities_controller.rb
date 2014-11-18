@@ -4,14 +4,14 @@ class QuizActivitiesController < ApplicationController
   respond_to :html
 
   def new
-    redirect_to new_fill_in_blank_question_path
+    redirect_to new_fill_in_the_blank_question_path
   end
 
   def create
     @quiz_activity = QuizActivity.new(quiz_activity_params)
     @quiz_activity.section = @section
     @quiz_activity.save
-    redirect_to page_path(@quiz_activity.activity)
+    redirect_to @quiz_activity.page
   end
 
   def edit

@@ -1,4 +1,4 @@
-= nested_form_for @question, url: fill_in_blank_question_path(@section) do |f|
+= nested_form_for @question do |f|
   = f.fields_for :page_content do |pf|
     .form-group
       = pf.label :content, 'Question'

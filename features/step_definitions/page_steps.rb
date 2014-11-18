@@ -1,8 +1,8 @@
 def activity_with_section
   @activity ||= FactoryGirl.create(
-    :activity,
+    :page,
     section: new_section,
-    page: FactoryGirl.create(:lesson_activity_with_content)
+    activity: FactoryGirl.create(:lesson_activity_with_content)
   )
 end
 

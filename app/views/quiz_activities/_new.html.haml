@@ -3,7 +3,7 @@
     = 'Question type'
     %span.caret
   %ul.dropdown-menu{ role: 'menu', 'aria-labeledby' => 'question-dropdown' }
-    - new_question_links(@section).each do |text, link|
+    - @section.decorate.question_links.each do |text, link|
       %li{ role: 'presentation' }
         = link_to text, link, role: 'menuitem', tabindex: -1
 = yield

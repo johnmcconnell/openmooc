@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :fill_in_the_blank_answer do
     text 'Test Answer'
-    fill_in_the_blank_question nil
+    fill_in_the_blank_question
   end
 end

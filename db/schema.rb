@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141116012933) do
     t.datetime "updated_at"
   end
 
-  add_index "fill_in_the_blank_answers", ["fill_in_the_blank_question_id"], name: "fitb_answer_belongs_to_fill_in_the_blank_question_index", unique: true, using: :btree
+  add_index "fill_in_the_blank_answers", ["fill_in_the_blank_question_id"], name: "fitb_answer_belongs_to_fill_in_the_blank_question_index", using: :btree
 
   create_table "fill_in_the_blank_questions", force: true do |t|
     t.integer  "page_content_id"

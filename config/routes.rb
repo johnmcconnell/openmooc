@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
   resources :sections, only: [ :show, :destroy, :edit ] do
     member do
-      resources :lesson_activity, only: [ :new, :create ]
-      resources :quiz_activity, only: [ :new, :create ]
+      resources :lesson_activities, only: [ :new, :create ]
+      resources :quiz_activities, only: [ :new, :create ]
     end
   end
 

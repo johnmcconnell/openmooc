@@ -9,7 +9,7 @@ FactoryGirl.define do
     description "Test Description"
 
     factory :course_with_sections do
-      sections { create_list(:new_section, 3) }
+      sections { create_list(:section, 3) }
     end
 
     factory :new_course do

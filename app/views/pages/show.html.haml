@@ -16,10 +16,10 @@
       - @page.section.pages.each do |page|
         - if @page == page
           %li.active
-            = link_to page.page_number, page
+            = link_to page.decorate.number, page
         - else
           %li
-            = link_to page.page_number, page
+            = link_to page.decorate.number, page
 .col-xs-8.col-sm-4
   = render partial: 'menu'
 .col-xs-12.col-sm-8
