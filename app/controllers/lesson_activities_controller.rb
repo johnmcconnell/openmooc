@@ -15,12 +15,12 @@ class LessonActivitiesController < ApplicationController
     @lesson_activity = LessonActivity.new(lesson_activity_params)
     @lesson_activity.section = @section
     @lesson_activity.save
-    redirect_to page_path(@lesson_activity.activity)
+    redirect_to page_path(@lesson_activity.page)
   end
 
   def update
     @lesson_activity.update(lesson_activity_params)
-    redirect_to page_path(@lesson_activity.activity)
+    redirect_to page_path(@lesson_activity.page)
   end
 
   private

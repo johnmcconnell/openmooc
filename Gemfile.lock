@@ -72,6 +72,11 @@ GEM
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
+    draper (1.4.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.4.0)
@@ -149,6 +154,7 @@ GEM
       json (~> 1.4)
     redcarpet (3.2.0)
     ref (1.0.5)
+    request_store (1.1.0)
     responders (1.1.1)
       railties (>= 3.2, < 4.2)
     rspec-collection_matchers (1.0.0)
@@ -225,6 +231,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  draper
   factory_girl_rails
   faker
   haml-rails

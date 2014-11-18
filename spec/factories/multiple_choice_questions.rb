@@ -1,8 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :fill_in_blank_answer do
-    text 'Test Answer'
-    fill_in_blank_question nil
+  factory :multiple_choice_question do
+    page_content nil
   end
 end

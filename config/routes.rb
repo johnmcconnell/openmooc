@@ -8,22 +8,25 @@ Rails.application.routes.draw do
   end
   resources :sections, only: [ :show, :destroy, :edit ] do
     member do
-      resource :lesson_activity, only: [ :new, :create ]
-      resource :quiz_activity, only: [ :new, :create ]
-      resource :fill_in_blank_question, only: [ :new, :create ]
+      resources :lesson_activity, only: [ :new, :create ]
+      resources :quiz_activity, only: [ :new, :create ]
     end
   end
-  resources :fill_in_blank_questions, only: [ :edit ] do
+
+  resources :lesson_activities, only: [ :edit, :update ]
+  resources :quiz_activities, only: [ :edit, :update ] do
+    member do
+      resources :fill_in_the_blank_questions, only: [ :new, :create ]
+    end
+  end
+
+  resources :fill_in_the_blank_questions, only: [ :edit, :update ] do
     member do
       post 'submit_answer'
-      patch 'update', as: 'update'
-      put 'update'
     end
   end
-  resources :pages, only: [ :show ], controller: 'activities'
-  resources :lesson_activities, only: [ :edit ]
-  patch 'lesson_activities/:id', to: 'lesson_activities#update', as: 'update_lesson_activity'
-  resources :quiz_activities, only: [ :edit ]
+
+  resources :pages, only: [ :show ]
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'

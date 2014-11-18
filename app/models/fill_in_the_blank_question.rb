@@ -1,15 +1,15 @@
-class FillInBlankQuestion < ActiveRecord::Base
+class FillInTheBlankQuestion < ActiveRecord::Base
   has_one :quiz_activity, as: :question
   belongs_to :page_content
-  has_many :answers, class_name: 'FillInBlankAnswer'
-  has_one :activity, through: :quiz_activity
+  has_many :answers, class_name: 'FillInTheBlankAnswer'
+  has_one :page, through: :quiz_activity
   has_one :section, through: :activity
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :page_content
   after_initialize :init
 
   def init
-    answers << FillInBlankAnswer.new if answers.empty?
+    answers << FillInTheBlankAnswer.new if answers.empty?
     self.page_content ||= PageContent.new
   end
 
@@ -18,6 +18,7 @@ class FillInBlankQuestion < ActiveRecord::Base
       answer_texts_match?(valid_answer_text, answer_text)
     end != nil
   end
+
 
   def to_s
     page_content.to_s

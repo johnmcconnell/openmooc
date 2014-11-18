@@ -3,10 +3,10 @@ class SectionsController < ApplicationController
   respond_to :html
 
   def show
-    if @section.activities.empty?
+    if @section.pages.empty?
       respond_with(@section)
     else
-      redirect_to page_path(@section.activities.first)
+      redirect_to @section.pages.first
     end
   end
 

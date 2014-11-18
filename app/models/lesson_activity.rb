@@ -1,7 +1,7 @@
 class LessonActivity < ActiveRecord::Base
-  has_one :activity, as: :page
+  has_one :page, as: :activity
   belongs_to :page_content
-  has_one :section, through: :activity
+  has_one :section, through: :page
   accepts_nested_attributes_for :page_content
   after_initialize :init
 

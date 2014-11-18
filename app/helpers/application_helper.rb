@@ -7,4 +7,10 @@ module ApplicationHelper
   def summary_text(wikitext)
    truncate wikitext, length: 350
   end
+
+  def new_question_links
+    [
+      [ 'Fill in the blank', [ :new, FillInBlankQuestion ] ]
+    ]
+  end
 end
