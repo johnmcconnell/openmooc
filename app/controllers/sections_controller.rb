@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  before_action :set_section, only: [:show, :edit, :update, :destroy]
+  before_action :set_section, only: [:show, :edit, :update, :destroy, :edit_pages]
   respond_to :html
 
   def show
@@ -13,13 +13,16 @@ class SectionsController < ApplicationController
   def edit
   end
 
+  def edit_pages
+  end
+
   def destroy
     @section.delete
     redirect_to edit_sections_course_path(@section.course)
   end
 
   def update
-    @section.update(course_params)
+    @section.update(section_params)
     respond_with(@section)
   end
 

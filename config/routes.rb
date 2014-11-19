@@ -6,12 +6,16 @@ Rails.application.routes.draw do
       patch 'add_section'
     end
   end
-  resources :sections, only: [ :show, :destroy, :edit ] do
+
+  resources :sections, only: [ :show, :destroy, :edit, :update ] do
     member do
+      get 'edit_pages'
       resources :lesson_activities, only: [ :new, :create ]
       resources :quiz_activities, only: [ :new, :create ]
     end
   end
+
+  resources :pages, only: [ :show ]
 
   resources :lesson_activities, only: [ :edit, :update ]
   resources :quiz_activities, only: [ :edit, :update ] do
@@ -26,7 +30,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :pages, only: [ :show ]
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'

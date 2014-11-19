@@ -18,16 +18,34 @@ def section_params(section)
   { 'Name' => section.name }
 end
 
+def new_name_params
+  { 'Name' => 'Brand spanking new name' }
+end
+
 def easy_html_remove(text)
   text.gsub(%r{</?[^>]+?>}, '')
 end
+
+### GIVEN ###
 
 Given(/^I am on a course sections page$/) do
   visit(section_path(section_with_course))
 end
 
+### WHEN ###
+
 When(/^I enter new section information$/) do
   enter_form(section_params(new_section))
+end
+
+When(/^I enter new section name$/) do
+  enter_form(new_name_params)
+end
+
+### THEN ###
+
+Then(/^I should see a new section name on the course page$/) do
+  expect(page).to have_content(new_name_params['Name'])
 end
 
 Then(/^I should see a new section on the course page$/) do

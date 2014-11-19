@@ -4,7 +4,7 @@ class LessonActivitiesController < ApplicationController
   respond_to :html
 
   def new
-    @lesson_activity = LessonActivity.new
+    @lesson_activity = LessonActivity.new(page_content: PageContent.new)
     @lesson_activity.section = @section
   end
 

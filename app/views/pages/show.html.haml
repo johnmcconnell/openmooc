@@ -26,7 +26,4 @@
   = render partial: @page.activity.decorate.to_partial_path(:show), locals: { activity: @page.activity }
 .col-xs-12.col-sm-8
   .pull-right
-    - if @page.lower_item.nil?
-      = link_to 'Finish lesson!', @page.course, class: 'btn btn-primary'
-    - else
-      = link_to @page.activity.next_page_text, @page.lower_item, class: 'btn btn-primary'
+    = link_to @page.decorate.next_link[:text], @page.decorate.next_link[:path], class: 'btn btn-primary'

@@ -1,6 +1,6 @@
 class FillInTheBlankAnswer < ActiveRecord::Base
-  belongs_to :fill_in_the_blank_question
-  after_initialize :init
+  belongs_to :fill_in_the_blank_question, dependent: :destroy
+  after_create :init
 
   def init
     self.text ||= ''

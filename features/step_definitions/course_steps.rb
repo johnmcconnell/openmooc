@@ -6,6 +6,10 @@ def new_course
   @new_course ||= FactoryGirl.build(:new_course)
 end
 
+def course_with_one_section
+  @course ||= FactoryGirl.create(:section).course
+end
+
 def course_with_sections
   @course ||= FactoryGirl.create(:course_with_sections)
 end
@@ -18,8 +22,13 @@ def course_to_params(course)
 end
 
 ##### GIVEN #####
+
 Given(/^The course has sections$/) do
   course_with_sections
+end
+
+Given(/^a course with one section$/) do
+  course_with_one_section
 end
 
 Given(/^I am on a course page$/) do
@@ -38,9 +47,13 @@ Given(/^I am on the courses page$/) do
     visit(courses_path)
 end
 
+### WHEN ###
+
 When(/^I enter new course information$/) do
   enter_form(course_to_params(new_course))
 end
+
+### THEN ###
 
 Then(/^I should be on the courses page$/) do
   expect(current_path).to eq(courses_path)

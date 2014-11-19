@@ -1,5 +1,6 @@
-= yield '#add_activity_modal'
-.modal.fade{ id: 'add_activity_modal', tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add activity', 'aria-hidden' => true }
+- modal_id = 'add_activity_modal'
+= yield "##{modal_id}"
+.modal.fade{ id: modal_id, tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add activity', 'aria-hidden' => true }
   .modal-dialog
     .modal-content
       .modal-header

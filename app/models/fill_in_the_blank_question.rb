@@ -4,9 +4,9 @@ class FillInTheBlankQuestion < ActiveRecord::Base
   has_many :answers, class_name: 'FillInTheBlankAnswer'
   has_one :page, through: :quiz_activity
   has_one :section, through: :activity
-  accepts_nested_attributes_for :answers
+  accepts_nested_attributes_for :answers, allow_destroy: true
   accepts_nested_attributes_for :page_content
-  after_initialize :init
+  after_create :init
 
   def init
     answers << FillInTheBlankAnswer.new if answers.empty?
