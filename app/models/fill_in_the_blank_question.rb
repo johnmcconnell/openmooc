@@ -6,7 +6,7 @@ class FillInTheBlankQuestion < ActiveRecord::Base
   has_one :section, through: :activity
   accepts_nested_attributes_for :answers, allow_destroy: true
   accepts_nested_attributes_for :page_content
-  after_create :init
+  after_initialize :init
 
   def init
     answers << FillInTheBlankAnswer.new if answers.empty?
@@ -18,7 +18,6 @@ class FillInTheBlankQuestion < ActiveRecord::Base
       answer_texts_match?(valid_answer_text, answer_text)
     end != nil
   end
-
 
   def to_s
     page_content.to_s

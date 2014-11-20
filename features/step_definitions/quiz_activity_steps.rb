@@ -1,5 +1,6 @@
 When(/^I select fill in the blank question$/) do
-  pending # i dunno
+  click_on('Fill in the blank question')
+  click_on('Fill in the blank question')
 end
 
 

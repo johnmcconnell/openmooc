@@ -16,7 +16,7 @@ describe PageContent do
 
   describe '::new' do
     it 'initializes with empty string' do
-      expect(PageContent.new.content).to eq('')
+      expect(described_class.new.content).to eq('')
     end
   end
 

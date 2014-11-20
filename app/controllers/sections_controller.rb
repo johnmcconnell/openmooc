@@ -28,12 +28,12 @@ class SectionsController < ApplicationController
 
   private
 
-    def set_section
-      id = params[:id]
-      @section = Section.find(id)
-    end
+  def set_section
+    id = params[:id]
+    @section = Section.find(id)
+  end
 
-    def section_params
-      params.require(:section).permit(:name)
-    end
+  def section_params
+    params.require(:section).permit(:name)
+  end
 end

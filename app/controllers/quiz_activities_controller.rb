@@ -1,6 +1,6 @@
 class QuizActivitiesController < ApplicationController
-  before_action :set_section, only: [ :new, :create ]
-  before_action :set_quiz_activity, only: [ :edit ]
+  before_action :set_section, only: [:new, :create]
+  before_action :set_quiz_activity, only: [:edit]
   respond_to :html
 
   def new
@@ -15,24 +15,23 @@ class QuizActivitiesController < ApplicationController
   end
 
   def edit
-    redirect_to [ :edit, @quiz_activity.question ]
   end
 
   private
 
-    def set_quiz_activity
-      id = params[:id]
-      @quiz_activity = QuizActivity.find(id)
-    end
+  def set_quiz_activity
+    id = params[:id]
+    @quiz_activity = QuizActivity.find(id)
+  end
 
-    def set_section
-      id = params[:id]
-      @section = Section.find(id)
-      fail 'need section' if @section.nil?
-    end
+  def set_section
+    id = params[:id]
+    @section = Section.find(id)
+    fail 'need section' if @section.nil?
+  end
 
-    def quiz_activity_params
-      params.require(:quiz_activity)
-        .permit(:questions, :answers)
-    end
+  def quiz_activity_params
+    params.require(:quiz_activity)
+      .permit(:questions, :answers)
+  end
 end

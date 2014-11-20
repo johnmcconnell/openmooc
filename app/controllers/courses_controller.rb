@@ -46,18 +46,18 @@ class CoursesController < ApplicationController
 
   private
 
-    def set_course
-      id = params[:id]
-      @course = Course.find(id)
-    end
+  def set_course
+    id = params[:id]
+    @course = Course.find(id)
+  end
 
-    def course_params
-      params.require(:course)
-        .permit(:title, :subject, :topic, :description,
-               page_content_attributes: [:content])
-    end
+  def course_params
+    params.require(:course)
+      .permit(:title, :subject, :topic, :description,
+              page_content_attributes: [:content])
+  end
 
-    def section_params
-      params.require(:section).permit(:name)
-    end
+  def section_params
+    params.require(:section).permit(:name)
+  end
 end

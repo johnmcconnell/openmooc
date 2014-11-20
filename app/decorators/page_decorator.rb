@@ -7,9 +7,9 @@ class PageDecorator < PartialDecorator
 
   def next_link
     if lower_item.nil?
-        { text: 'Finish lesson!', path: course }
+      { text: 'Finish lesson!', path: course }
     else
-       { text: activity.decorate.next_page_text, path: lower_item }
+      { text: activity.decorate.next_page_text, path: lower_item }
     end
   end
 end

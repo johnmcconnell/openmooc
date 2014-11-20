@@ -1,7 +1,7 @@
 class FillInTheBlankQuestionsController < ApplicationController
-  before_action :set_section, only: [ :new, :create ]
-  before_action :set_question, only: [ :submit_answer, :edit, :update ]
-  before_action :set_answer_submission, only: [ :submit_answer ]
+  before_action :set_section, only: [:new, :create]
+  before_action :set_question, only: [:submit_answer, :edit, :update]
+  before_action :set_answer_submission, only: [:submit_answer]
 
   def new
     @question = FillInTheBlankQuestion.new(page_content: PageContent.new)
@@ -53,8 +53,8 @@ class FillInTheBlankQuestionsController < ApplicationController
   def question_params
     params.require(:fill_in_the_blank_question)
       .permit(
-        answers_attributes: [ :id, :text, :_destroy ],
-        page_content_attributes: [ :content ]
+        answers_attributes: [:id, :text, :_destroy],
+        page_content_attributes: [:content]
       )
   end
 end

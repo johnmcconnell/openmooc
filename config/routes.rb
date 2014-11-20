@@ -17,14 +17,14 @@ Rails.application.routes.draw do
 
   resources :pages, only: [ :show ]
 
-  resources :lesson_activities, only: [ :edit, :update ]
+  resources :lesson_activities, only: [ :edit, :update]
   resources :quiz_activities, only: [ :edit, :update ] do
     member do
       resources :fill_in_the_blank_questions, only: [ :new, :create ]
     end
   end
 
-  resources :fill_in_the_blank_questions, only: [ :edit, :update ] do
+  resources :fill_in_the_blank_questions, only: [] do
     member do
       post 'submit_answer'
     end

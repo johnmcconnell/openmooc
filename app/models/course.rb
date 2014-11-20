@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
   private
 
   def init
-    self.page_content ||= PageContent.new(content: "")
+    self.page_content ||= PageContent.new(content: '')
     self.sections ||= []
   end
 end

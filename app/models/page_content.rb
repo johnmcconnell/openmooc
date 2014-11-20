@@ -2,10 +2,10 @@ class PageContent < ActiveRecord::Base
   validates_length_of :content, maximum: 1500
   validates_length_of :html, maximum: 3000
   before_save :render_html
-  after_create :init
+  after_initialize :init
 
   def init
-    self.content ||= ""
+    self.content ||= ''
   end
 
   def to_s

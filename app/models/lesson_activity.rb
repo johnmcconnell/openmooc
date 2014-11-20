@@ -3,7 +3,7 @@ class LessonActivity < ActiveRecord::Base
   belongs_to :page_content
   has_one :section, through: :page
   accepts_nested_attributes_for :page_content
-  after_create :init
+  after_initialize :init
 
   private
 
