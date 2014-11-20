@@ -1,0 +1,54 @@
+@import "twitter/bootstrap/bootstrap";
+@import "flash";
+@import "input";
+@import "headings";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+
+
+// Glyphicons
+@import "twitter/bootstrap/glyphicons.less";
+
+// variables and overrides
+
+// Colors
+@orange: #FA2;
+@purple: #339;
+@gray-pure: lighten(@gray-base, 100%);
+
+@brand-1-color: @purple;
+@brand-2-color: @orange;
+
+@brand-primary: @brand-1-color;
+@grid-float-breakpoint: @screen-desktop;
+
+// Jumbotron
+
+@jumbotron-bg: @gray-pure;
+@jumbotron-heading-color: @brand-1-color;
+
+// Navbar
+
+@navbar-default-color: @gray-pure;
+@navbar-default-bg: @gray-base;
+@navbar-default-link-color: @gray-pure;
+@navbar-default-link-hover-color: darken(@navbar-default-link-color, 10%);
+
+// Styling
+
+a.btn-primary:visited {
+  color: #FFF;
+}
