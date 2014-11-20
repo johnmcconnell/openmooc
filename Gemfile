@@ -51,6 +51,7 @@ gem 'redcarpet'
 gem 'nested_form'
 gem 'acts_as_list'
 gem 'draper'
+gem 'interactor-rails'
 
 group :test do
   gem 'cucumber-rails', require: false
@@ -60,6 +61,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'rubocop'
   gem 'factory_girl_rails', require: false
   gem 'faker'
   gem 'rspec-rails'

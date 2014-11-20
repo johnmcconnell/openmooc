@@ -1,5 +1,8 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :edit_sections, :add_section]
+  before_action :set_course, only: [
+    :show, :edit, :update, :destroy,
+    :edit_sections, :add_section
+  ]
   respond_to :html
 
   def index
@@ -54,7 +57,7 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course)
       .permit(:title, :subject, :topic, :description,
-              page_content_attributes: [:content])
+        page_content_attributes: [:content])
   end
 
   def section_params

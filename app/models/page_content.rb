@@ -15,8 +15,13 @@ class PageContent < ActiveRecord::Base
   private
 
   def render_html
-    self.html = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML.new(escape_html: true), autolink: true, tables: true
-    ).render(content)
+    self.html = renderer.render(content)
+  end
+
+  def renderer
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new(escape_html: true),
+      autolink: true, tables: true,
+    )
   end
 end

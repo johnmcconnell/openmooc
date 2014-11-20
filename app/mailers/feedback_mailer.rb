@@ -6,4 +6,8 @@ class FeedbackMailer < ActionMailer::Base
     @user = user
     mail(to: ENV['ADMIN_EMAIL'], subject: @feedback.subject)
   end
+
+  def send_feedback(feedback, user)
+    feedback_email(feedback, user).deliver
+  end
 end

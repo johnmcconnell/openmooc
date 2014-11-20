@@ -9,3 +9,7 @@ Rails.application.load_tasks
 RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
+
+task :cop do
+  system('rubocop -c .hound.yml app')
+end

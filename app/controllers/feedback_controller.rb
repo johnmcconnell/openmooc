@@ -5,8 +5,7 @@ class FeedbackController < ApplicationController
 
   def create
     feedback = Feedback.new(feedback_params)
-    if feedback.save
-      FeedbackMailer.feedback_email(feedback, current_user).deliver
+    if feedback.save && FeedbackMailer.send_feedback(feedback, current_user)
       flash[:success] = success_message
     else
       flash[:error] = fail_message

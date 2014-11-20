@@ -1,5 +1,8 @@
 class SectionsController < ApplicationController
-  before_action :set_section, only: [:show, :edit, :update, :destroy, :edit_pages]
+  before_action :set_section, only: [
+    :show, :edit, :update,
+    :destroy, :edit_pages
+  ]
   respond_to :html
 
   def show

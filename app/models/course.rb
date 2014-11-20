@@ -9,6 +9,5 @@ class Course < ActiveRecord::Base
 
   def init
     self.page_content ||= PageContent.new(content: '')
-    self.sections ||= []
   end
 end

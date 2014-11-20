@@ -24,16 +24,25 @@ class FillInTheBlankQuestionsController < ApplicationController
 
   def submit_answer
     if @question.correct_answer?(@answer_submission)
-      flash[:success] = 'Great Job!'
-      redirect_to @question.quiz_activity.page.decorate.next_link[:path]
+      correct_response
     else
-      flash[:danger] = 'Try again!'
-      flash[:answer_submission_error] = "Incorrect response '#{@answer_submission}'"
-      redirect_to @question.quiz_activity.page
+      incorrect_response
     end
   end
 
   private
+
+  def correct_response
+    flash[:success] = 'Great Job!'
+    redirect_to @question.quiz_activity.page.decorate.next_link[:path]
+  end
+
+  def incorrect_response
+    flash[:danger] = 'Try again!'
+    flash[:answer_submission_error] =
+      "Incorrect response '#{@answer_submission}'"
+    redirect_to @question.quiz_activity.page
+  end
 
   def set_question
     id = params[:id]
@@ -54,7 +63,7 @@ class FillInTheBlankQuestionsController < ApplicationController
     params.require(:fill_in_the_blank_question)
       .permit(
         answers_attributes: [:id, :text, :_destroy],
-        page_content_attributes: [:content]
+        page_content_attributes: [:content],
       )
   end
 end
