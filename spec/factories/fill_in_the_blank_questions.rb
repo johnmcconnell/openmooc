@@ -6,6 +6,10 @@ FactoryGirl.define do
     answers []
     quiz_activity
 
+    factory :example_fill_in_the_blank_question do
+      answers { create_list(:example_fill_in_the_blank_answer, 3) }
+    end
+
     factory :fill_in_the_blank_question_with_answers do
       answers { create_list(:fill_in_the_blank_answer, 3) }
     end

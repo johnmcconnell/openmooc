@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :lesson_activity_with_content, class: LessonActivity do
-    association :page_content, factory: :page_content
-    association :page
+    page_content
+    page
+
+    factory :example_lesson_activity
   end
 end

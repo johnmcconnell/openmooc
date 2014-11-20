@@ -12,6 +12,10 @@ FactoryGirl.define do
       sections { create_list(:section, 3) }
     end
 
+    factory :example_course do
+      sections { create_list(:example_section, 3) }
+    end
+
     factory :new_course do
       title "New Title"
       subject "New Subject"

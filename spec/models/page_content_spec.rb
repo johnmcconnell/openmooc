@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PageContent do
+RSpec.describe PageContent, type: :model do
   let(:basic_page) { FactoryGirl.build(:page_content) }
   let(:too_much_page_content) { FactoryGirl.build(:too_much_page_content) }
 

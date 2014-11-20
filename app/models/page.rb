@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   belongs_to :section
   acts_as_list scope: :section
-  belongs_to :activity, polymorphic: true
+  belongs_to :activity, polymorphic: true, dependent: :destroy
   has_one :course, through: :section
 end

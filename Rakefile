@@ -6,10 +6,6 @@ require 'rspec/core/rake_task'
 
 Rails.application.load_tasks
 
-RSpec::Core::RakeTask.new(:spec)
-
-task :default => :spec
-
 task :cop do
-  system('rubocop -c .hound.yml app')
+  system('rubocop -c .hound.yml app lib')
 end
