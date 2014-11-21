@@ -3,6 +3,6 @@
     = @quiz_activity.question.decorate.type
     %span.caret
   %ul.dropdown-menu{ role: 'menu', 'aria-labeledby' => 'question-dropdown' }
-    - @quiz_activity.decorate.question_links.each do |link|
+    - @quiz_activity.decorate.new_question_paths.each do |text, path|
       %li{ role: 'presentation' }
-        = link_to link[:type], link[:path], role: 'menuitem', tabindex: -1
+        = link_to text, path, role: 'menuitem', tabindex: -1

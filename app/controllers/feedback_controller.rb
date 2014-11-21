@@ -5,7 +5,7 @@ class FeedbackController < ApplicationController
 
   def create
     feedback = Feedback.new(feedback_params)
-    if feedback.save && FeedbackMailer.send_feedback(feedback, current_user)
+    if feedback.save && feedback_send(feedback)
       flash[:success] = success_message
     else
       flash[:error] = fail_message
@@ -14,6 +14,10 @@ class FeedbackController < ApplicationController
   end
 
   private
+
+  def feedback_send(feedback)
+    FeedbackMailer.feedback_email(feedback, current_user).deliver
+  end
 
   def success_message
     'Your feedback has been sent'

@@ -1,6 +1,8 @@
 When(/^I select fill in the blank question$/) do
-  click_on('Fill in the blank question')
-  click_on('Fill in the blank question')
+  click_on('question-dropdown')
+  within(:css, '.dropdown-menu') do
+    click_on('Fill in the blank question')
+  end
 end
 
 

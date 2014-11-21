@@ -1,7 +1,8 @@
 class FillInTheBlankQuestionsController < ApplicationController
-  before_action :set_section, only: [:new, :create]
-  before_action :set_question, only: [:submit_answer, :edit, :update]
-  before_action :set_answer_submission, only: [:submit_answer]
+  before_action :set_section, only: [:new, :create_for_section ]
+  before_action :set_quiz_activity, only: [:new, :update_for_quiz_activity ]
+  before_action :set_question, only: [ :submit_answer, :edit, :update ]
+  before_action :set_answer_submission, only: [ :submit_answer ]
 
   def new
     @question = FillInTheBlankQuestion.new(page_content: PageContent.new)
@@ -10,9 +11,21 @@ class FillInTheBlankQuestionsController < ApplicationController
   def edit
   end
 
+  def create_for_section
+    @question = FillInTheBlankQuestion.new(question_params)
+    @question.assign_attributes({ quiz_activity: QuizActivity.new(section: @section) })
+    @question.save
+    redirect_to @question.page
+  end
+
+  def update_for_quiz_activity
+    @quiz_activity.question.destroy
+    @quiz_activity.update(question: FillInTheBlankQuestion.new(question_params))
+    redirect_to @quiz_activity.page
+  end
+
   def create
     @question = FillInTheBlankQuestion.new(question_params)
-    @question.quiz_activity = QuizActivity.create(section: @section)
     @question.save
     redirect_to @question.quiz_activity.page
   end
@@ -50,9 +63,13 @@ class FillInTheBlankQuestionsController < ApplicationController
   end
 
   def set_section
-    id = params[:id]
+    id = params.require(:fill_in_the_blank_question)[:section_id]
     @section = Section.find(id)
-    fail 'need section' if @section.nil?
+  end
+
+  def set_quiz_activity
+    id = params.require(:fill_in_the_blank_question)[:quiz_activity_id]
+    @quiz_activity = QuizActivity.find(id)
   end
 
   def set_answer_submission

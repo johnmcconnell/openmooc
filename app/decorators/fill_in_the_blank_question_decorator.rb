@@ -8,4 +8,8 @@ class FillInTheBlankQuestionDecorator < PartialDecorator
   def type
     self.class.type
   end
+
+  def create_for_section_url
+    h.create_for_section_fill_in_the_blank_questions_path
+  end
 end
