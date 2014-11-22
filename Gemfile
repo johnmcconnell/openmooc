@@ -52,6 +52,7 @@ gem 'nested_form'
 gem 'acts_as_list'
 gem 'draper'
 gem 'interactor-rails'
+gem 'freebase-api'
 
 group :test do
   gem 'cucumber-rails', require: false

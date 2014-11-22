@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116012933) do
+ActiveRecord::Schema.define(version: 20141122204645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aliases", force: true do |t|
+    t.string   "text"
+    t.integer  "fill_in_the_blank_answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "aliases", ["fill_in_the_blank_answer_id"], name: "index_aliases_on_fill_in_the_blank_answer_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.string   "title"
