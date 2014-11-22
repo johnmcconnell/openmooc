@@ -51,8 +51,7 @@ class FillInTheBlankQuestionsController < ApplicationController
   end
 
   def incorrect_response
-    flash[:danger] = 'Try again!'
-    flash[:answer_submission_error] =
+    flash[:danger] =
       "Incorrect response '#{@answer_submission}'"
     redirect_to @question.quiz_activity.page
   end

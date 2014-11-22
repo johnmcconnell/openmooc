@@ -12,5 +12,5 @@ Feature: As a user I like to submit
     Given I am on a fill in the blank question page
     When I enter a wrong answer submission for fill in the blank question
     And I click "Submit answer"
-    Then I should see "Try again!"
+    Then I should see "Incorrect response"
     And I should be on the fill in the blank question page

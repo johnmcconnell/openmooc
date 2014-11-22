@@ -61,3 +61,7 @@ end
 Then(/^I should be on the fill in the blank question page$/) do
   expect(current_path).to eq(page_path(fitb_question.quiz_activity.page))
 end
+
+Then(/^I should see fill in the blank question content$/) do
+  expect(page).to have_content(fitb_question['Question'])
+end
