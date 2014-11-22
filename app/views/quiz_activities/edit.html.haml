@@ -1,8 +1,8 @@
-.row
+.col-xs-12
   .col4-xs-12.col-md-6.col-lg-3
     %h1
       Edit quiz
     = render 'edit_question_dropdown'
-.row
-  .col-xs-12-col-sm-10.col-md-8.col-lg-6
+.col-xs-12
+  .col-xs-12.col-sm-10.col-md-8.col-lg-6
     = render partial: @quiz_activity.question.decorate.to_partial_path('quiz_activity_edit_form')
