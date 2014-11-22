@@ -13,10 +13,10 @@ class FillInTheBlankQuestion < ActiveRecord::Base
     self.page_content ||= PageContent.new
   end
 
-  def correct_answer?(answer_text)
-    answers.map(&:text).detect do |valid_answer_text|
-      answer_texts_match?(valid_answer_text, answer_text)
-    end != nil
+  def correct_answer?(text)
+    answers.any? do |answer|
+      answer_texts_match?(answer.text, text)
+    end
   end
 
   def to_s

@@ -20,14 +20,14 @@ def right_answer_params
   { 'Answer' => 'Test Answer' }
 end
 
-def question
+def fitb_question
   @question ||= FactoryGirl.create(:fill_in_the_blank_question_with_answers)
 end
 
 ### GIVEN ###
 
 Given(/^I am on a fill in the blank question page$/) do
-  visit(page_path(question.quiz_activity.page))
+  visit(page_path(fitb_question.quiz_activity.page))
 end
 
 ### WHEN ###
@@ -59,5 +59,5 @@ Then(/^I should see a new quiz page$/) do
 end
 
 Then(/^I should be on the fill in the blank question page$/) do
-  expect(current_path).to eq(page_path(question.quiz_activity.page))
+  expect(current_path).to eq(page_path(fitb_question.quiz_activity.page))
 end

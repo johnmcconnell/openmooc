@@ -3,12 +3,12 @@
   = f.fields_for :page_content do |pf|
     .form-group
       = pf.label :content, 'Question'
-      = pf.text_area :content, class: 'form-control', rows: '5', maxlength: 150
+      = pf.text_area :content, class: 'form-control', rows: '5', maxlength: 150, placeholder: 'question'
   = f.fields_for :answers do |af|
     .form-group
       = af.label :text, 'Answer'
       .input-group
-        = af.text_field :text, class: 'form-control'
+        = af.text_field :text, class: 'form-control', placeholder: 'answer'
         .input-group-btn
           = af.link_to_remove 'Remove answer', class: 'btn btn-default'
   .form-group

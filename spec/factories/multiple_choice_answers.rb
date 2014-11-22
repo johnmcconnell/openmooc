@@ -3,13 +3,14 @@
 FactoryGirl.define do
   factory :multiple_choice_answer do
     multiple_choice_question
+    text 'incorrect answer'
     correct false
 
     factory :incorrect_multiple_choice_answer do
-      correct false
     end
 
     factory :correct_multiple_choice_answer do
+      text 'correct answer'
       correct true
     end
   end

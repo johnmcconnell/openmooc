@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       get 'edit_sections'
       patch 'add_section'
+      put 'add_section'
     end
   end
 
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
     get :update_multiple_choice_question, on: :member
   end
 
-  resources :multiple_choice_questions, only: [] do
+  resources :multiple_choice_questions, only: [ :update ] do
     collection do
       post :create_for_section
       post :update_for_quiz_activity

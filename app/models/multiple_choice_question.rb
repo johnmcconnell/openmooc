@@ -9,6 +9,27 @@ class MultipleChoiceQuestion < ActiveRecord::Base
   after_initialize :init
 
   def init
-    self.page_content = PageContent.new
+    self.page_content ||= PageContent.new
+    self.answers = [ correct_answer, incorrect_answer ] if answers.empty?
+  end
+
+  def correct_answer?(text)
+    answers.any? do |answer|
+      answer.correct && answer.text == text
+    end
+  end
+
+  def to_s
+    page_content.to_s
+  end
+
+  private
+
+  def correct_answer
+    MultipleChoiceAnswer.new(correct: true)
+  end
+
+  def incorrect_answer
+    MultipleChoiceAnswer.new(correct: false)
   end
 end

@@ -8,4 +8,4 @@ Feature: As a user I would like to add a multiple choice
     And I select multiple choice question
     And I enter new multiple choice question content
     And I click "Create question"
-    Then I should see a multiple choice quiz page
+    Then I should be on the multiple choice quiz page
