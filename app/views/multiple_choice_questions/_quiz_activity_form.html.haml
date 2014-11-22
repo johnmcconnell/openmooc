@@ -11,6 +11,9 @@
         = af.text_field :text, class: 'form-control'
         .input-group-btn
           = af.link_to_remove 'Remove answer', class: 'btn btn-default'
+      .input-group
+        = af.label :correct
+        = af.check_box :correct
   .form-group
     = f.link_to_add 'Add answer', :answers, class: 'btn btn-default'
   .form-group

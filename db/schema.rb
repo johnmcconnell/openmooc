@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141116012933) do
   create_table "multiple_choice_answers", force: true do |t|
     t.integer  "multiple_choice_question_id"
     t.string   "text"
+    t.boolean  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

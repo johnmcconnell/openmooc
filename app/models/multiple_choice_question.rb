@@ -1,4 +1,5 @@
 class MultipleChoiceQuestion < ActiveRecord::Base
+  has_one :quiz_activity, as: :question
   belongs_to :page_content
   has_many :answers, class_name: 'MultipleChoiceAnswer'
   has_one :page, through: :quiz_activity

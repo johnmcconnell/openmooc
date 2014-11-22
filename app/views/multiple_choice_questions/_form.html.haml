@@ -1,4 +1,6 @@
-= nested_form_for @question, url: fill_in_blank_question_path(@section) do |f|
+= nested_form_for question, url: url do |f|
+  - extra_params.each do |(key, value)|
+    = f.hidden_field key, value: value
   = f.fields_for :page_content do |pf|
     .form-group
       = pf.label :content, 'Question'
@@ -10,6 +12,9 @@
         = af.text_field :text, class: 'form-control'
         .input-group-btn
           = af.link_to_remove 'Remove answer', class: 'btn btn-default'
+      .input-group
+        = af.label :correct
+        = af.check_box :correct
   .form-group
     = f.link_to_add 'Add answer', :answers, class: 'btn btn-default'
   .form-group
