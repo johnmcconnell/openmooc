@@ -19,7 +19,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :pages, only: [ :show ]
+  resources :pages, only: [ :show ] do
+    member do
+      put 'move_higher', as: 'move_higher'
+      patch 'move_higher'
+      put 'move_lower', as: 'move_lower'
+      patch 'move_lower'
+    end
+  end
 
   resources :lesson_activities, only: [ :edit, :update]
   resources :quiz_activities, only: [ :edit, :update ] do

@@ -6,4 +6,4 @@
 = form_for question, url: submit_answer_multiple_choice_question_path(question), method: :post do |f|
   - question.answers.each do |answer|
     .form-group
-      = f.submit value: answer.text, name: 'answer', class: 'btn btn-default'
+      = f.submit value: answer.text, name: 'answer', class: 'btn btn-primary'
