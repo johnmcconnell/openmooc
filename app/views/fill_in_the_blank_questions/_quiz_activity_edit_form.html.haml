@@ -7,7 +7,7 @@
         = pf.text_area :content, class: 'form-control', rows: '5', maxlength: 150, placeholder: 'question'
     = f.fields_for :answers do |af|
       .form-group
-        = f.label :text, 'Answer'
+        = af.label :text, 'Answer'
         .input-group
           = af.text_field :text, class: 'form-control', placeholder: 'answer'
           .input-group-btn
