@@ -4,15 +4,15 @@
     .form-group
       = pf.label :content, 'Question'
       = pf.text_area :content, class: 'form-control', rows: '5', maxlength: 150, placeholder: 'question'
+  = f.label :answers
   = f.fields_for :answers do |af|
     .form-group
-      = af.label :text, 'Answer'
       .input-group
         = af.text_field :text, class: 'form-control', placeholder: 'answer'
         .input-group-btn
           = af.link_to_remove 'Remove answer', class: 'btn btn-default'
   .form-group
-    = f.link_to_add 'Add answer', :answers, class: 'btn btn-default'
+    = f.link_to_add 'Add answer &plus;'.html_safe, :answers, class: 'btn btn-default'
   .form-group
     = link_to 'Cancel', @section, class: 'btn btn-default'
     = f.submit 'Create question', class: 'btn btn-primary'

@@ -54,6 +54,18 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :fill_in_the_blank_questions, only: [] do
+    member do
+      get 'find_aliases'
+      post 'create_answers'
+    end
+  end
+
+  resources :aliases, only: [] do
+    collection do
+    end
+  end
+
   get 'search/course', to: 'query#course'
   get 'help', to: 'application#help'
   get 'about', to: 'application#about'

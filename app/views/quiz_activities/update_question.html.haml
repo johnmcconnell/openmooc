@@ -1,8 +1,7 @@
 .col-xs-12
-  .col-xs-12.col-md-6.col-lg-3
+  .page-header
     %h1
       Edit quiz
     = render 'edit_question_dropdown'
 .col-xs-12
-  .col-xs-12-col-sm-10.col-md-8.col-lg-6
-    = render partial: @quiz_activity.question.decorate.to_partial_path('quiz_activity_update_form')
+  = render partial: @quiz_activity.question.decorate.to_partial_path('quiz_activity_update_form')

@@ -1,7 +1,7 @@
 class FillInTheBlankQuestion < ActiveRecord::Base
   has_one :quiz_activity, as: :question
   belongs_to :page_content
-  has_many :answers, class_name: 'FillInTheBlankAnswer'
+  has_many :answers, class_name: 'FillInTheBlankAnswer', dependent: :destroy
   has_one :page, through: :quiz_activity
   has_one :section, through: :quiz_activity
   accepts_nested_attributes_for :answers, allow_destroy: true

@@ -1,7 +1,7 @@
 class FillInTheBlankQuestionsController < ApplicationController
   before_action :set_section, only: [:new, :create_for_section ]
   before_action :set_quiz_activity, only: [:new, :update_for_quiz_activity ]
-  before_action :set_question, only: [ :submit_answer, :edit, :update ]
+  before_action :set_question, only: [ :submit_answer, :edit, :update, :find_aliases, :create_answers ]
   before_action :set_answer_submission, only: [ :submit_answer ]
 
   def new
@@ -11,17 +11,29 @@ class FillInTheBlankQuestionsController < ApplicationController
   def edit
   end
 
+  def find_aliases
+    @aliases = Alias.query(params[:q])
+  end
+
   def create_for_section
     @question = FillInTheBlankQuestion.new(question_params)
-    @question.assign_attributes({ quiz_activity: QuizActivity.new(section: @section) })
+    @question.quiz_activity = QuizActivity.create(section: @section)
     @question.save
     redirect_to @question.page
   end
 
   def update_for_quiz_activity
-    @quiz_activity.question.destroy
-    @quiz_activity.update(question: FillInTheBlankQuestion.new(question_params))
+    old_question = @quiz_activity.question.destroy
+    if @quiz_activity.update!(question: FillInTheBlankQuestion.new(question_params))
+      old_question.destroy
+    end
     redirect_to @quiz_activity.page
+  end
+
+  def create_answers
+    answers = answers_from_aliases
+    @question.update(answers: @question.answers + answers)
+    redirect_to edit_quiz_activity_path(@question.quiz_activity)
   end
 
   def create
@@ -31,6 +43,7 @@ class FillInTheBlankQuestionsController < ApplicationController
   end
 
   def update
+    activity = @question.quiz_activity
     @question.update(question_params)
     redirect_to @question.quiz_activity.page
   end
@@ -44,6 +57,15 @@ class FillInTheBlankQuestionsController < ApplicationController
   end
 
   private
+
+  def answers_from_aliases
+    answers = aliases_params.keep_if { |a| a['add'] == '1' }
+    answers.map! { |a| FillInTheBlankAnswer.from_alias(a) }
+  end
+
+  def aliases_params
+    params.permit(aliases: [:add, :text]).require(:aliases)
+  end
 
   def correct_response
     flash[:success] = 'Great Job!'

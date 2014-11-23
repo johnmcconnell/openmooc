@@ -10,8 +10,7 @@
     = render partial: 'section_form', locals: { section: section }
 .col-xs-3.col-md-1
   %button.btn.btn-lg.btn-default{ 'data-toggle' => 'modal', 'data-target' => '#add_section_modal' }
-    Add lesson
-    %span.glyphicon.glyphicon-plus
+    Add lesson &plus;
 .modal.fade{ id: 'add_section_modal', tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add section', 'aria-hidden' => true }
   .modal-dialog
     .modal-content

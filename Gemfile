@@ -55,6 +55,8 @@ gem 'interactor-rails'
 gem 'freebase-api'
 
 group :test do
+  gem 'vcr'
+  gem 'webmock'
   gem 'cucumber-rails', require: false
   gem 'rspec-expectations'
   gem 'rspec-collection_matchers'
