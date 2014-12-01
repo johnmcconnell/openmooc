@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [
     :show, :edit, :update, :destroy,
-    :edit_sections, :add_section
+    :edit_sections
   ]
   respond_to :html
 
@@ -24,12 +24,6 @@ class CoursesController < ApplicationController
   end
 
   def edit
-  end
-
-  def add_section
-    @course.sections << Section.new(section_params)
-    @course.save
-    redirect_to edit_sections_course_path(@course)
   end
 
   def edit_sections
@@ -58,9 +52,5 @@ class CoursesController < ApplicationController
     params.require(:course)
       .permit(:title, :subject, :topic, :description,
         page_content_attributes: [:content])
-  end
-
-  def section_params
-    params.require(:section).permit(:name)
   end
 end

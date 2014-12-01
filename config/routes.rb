@@ -1,25 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :courses, except: [ :delete ] do
+  resources :courses, shallow: true, except: [:delete] do
     member do
       get 'edit_sections'
-      patch 'add_section'
-      put 'add_section'
     end
   end
 
-  resources :sections, only: [ :show, :destroy, :edit, :update ] do
+  resources :sections, only: [:show, :destroy, :edit, :update] do
     member do
       get 'edit_pages'
-      resources :lesson_activities, only: [ :new, :create ]
-      resources :quiz_activities, only: [ :new, :create ] do
-        get :fill_in_the_blank_question, on: :new
-        get :multiple_choice_question, on: :new
-      end
     end
   end
 
-  resources :pages, only: [ :show ] do
+  resources :pages do
     member do
       put 'move_higher', as: 'move_higher'
       patch 'move_higher'
@@ -28,27 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lesson_activities, only: [ :edit, :update]
-  resources :quiz_activities, only: [ :edit, :update ] do
-    get :update_fill_in_the_blank_question, on: :member
-    get :update_multiple_choice_question, on: :member
-  end
-
-  resources :multiple_choice_questions, only: [ :update ] do
-    collection do
-      post :create_for_section
-      post :update_for_quiz_activity
-    end
-    member do
-      post :submit_answer
-    end
-  end
-
-  resources :fill_in_the_blank_questions, only: [ :update ] do
-    collection do
-      post :create_for_section
-      post :update_for_quiz_activity
-    end
+  resources :multiple_choice_questions, only: [] do
     member do
       post :submit_answer
     end
@@ -57,7 +30,7 @@ Rails.application.routes.draw do
   resources :fill_in_the_blank_questions, only: [] do
     member do
       get 'find_aliases'
-      post 'create_answers'
+      post 'submit_answer'
     end
   end
 
