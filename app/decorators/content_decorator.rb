@@ -1,4 +1,4 @@
-class LessonActivityDecorator < PartialDecorator
+class ContentDecorator < PartialDecorator
   delegate_all
 
   def type

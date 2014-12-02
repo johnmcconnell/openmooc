@@ -33,7 +33,9 @@ RSpec.describe FillInTheBlankQuestion, type: :model do
 
   describe '#to_s' do
     it 'uses page_content to_s' do
-      expect(described_class.new.to_s).to eq(described_class.new.page_content.to_s)
+      expect(
+        described_class.new.to_s,
+      ).to eq(described_class.new.page_content.to_s)
     end
   end
 end

@@ -21,7 +21,7 @@ def new_name_params
 end
 
 def easy_html_remove(text)
-  text.gsub(%r{</?[^>]+?>}, '')
+  text.gsub(/<\/?[^>]+?>/, '')
 end
 
 ### GIVEN ###
@@ -55,7 +55,8 @@ Then(/^I should not see new section info$/) do
 end
 
 Then(/^I should see new content on the sections page$/) do
-  page_content = easy_html_remove(section.pages.first.activity.page_content.to_s)
+  page_content = easy_html_remove(
+    section.pages.first.activity.page_content.to_s)
   expect(page).to have_content(page_content)
 end
 

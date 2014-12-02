@@ -1,7 +1,9 @@
 class FillInTheBlankQuestionsController < ApplicationController
   before_action :set_section, only: [:new, :create_for_section]
   before_action :set_quiz_activity, only: [:new, :update_for_quiz_activity]
-  before_action :set_question, only: [:submit_answer, :edit, :update, :find_aliases, :create_answers]
+  before_action :set_question, only: [
+    :submit_answer, :edit, :update, :find_aliases, :create_answers
+  ]
   before_action :set_answer_submission, only: [:submit_answer]
 
   def new
@@ -24,7 +26,8 @@ class FillInTheBlankQuestionsController < ApplicationController
 
   def update_for_quiz_activity
     old_question = @quiz_activity.question.destroy
-    if @quiz_activity.update!(question: FillInTheBlankQuestion.new(question_params))
+    if @quiz_activity
+       .update!(question: FillInTheBlankQuestion.new(question_params))
       old_question.destroy
     end
     redirect_to @quiz_activity.page

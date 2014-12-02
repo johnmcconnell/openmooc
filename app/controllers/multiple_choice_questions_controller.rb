@@ -13,14 +13,18 @@ class MultipleChoiceQuestionsController < ApplicationController
 
   def create_for_section
     @question = MultipleChoiceQuestion.new(question_params)
-    @question.assign_attributes(quiz_activity: QuizActivity.new(section: @section))
+    @question.assign_attributes(
+      quiz_activity: QuizActivity.new(section: @section),
+    )
     @question.save
     redirect_to @question.page
   end
 
   def update_for_quiz_activity
     @quiz_activity.question.destroy
-    @quiz_activity.update(question: MultipleChoiceQuestion.new(question_params))
+    @quiz_activity.update(
+      question: MultipleChoiceQuestion.new(question_params),
+    )
     redirect_to @quiz_activity.page
   end
 

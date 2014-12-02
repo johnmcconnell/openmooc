@@ -15,7 +15,8 @@ RSpec.describe Page, type: :model do
 
   describe '#section=' do
     it 'sets the #postion as the size of the section.activities' do
-      expect { page.update(section: section) }.to change { page.position }.from(nil).to(4)
+      expect { page.update(section: section) }.to change { page.position }
+        .from(nil).to(4)
     end
   end
 

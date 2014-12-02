@@ -5,10 +5,10 @@
       %th Type
       %th
       %th
-    - @section.pages.each do |page|
+    - @lesson.pages.each do |page|
       %tr
         %td= link_to page.decorate.number, page
-        %td= link_to page.activity.decorate.type, page
+        %td= link_to page.decorate.type, page
         %td
           = button_to move_higher_page_path(page), { method: :put, class: 'btn btn-sm btn-default' } do
             Move up

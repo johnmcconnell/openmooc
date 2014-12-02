@@ -14,7 +14,8 @@ FactoryGirl.define do
     end
 
     factory :page_with_fill_in_the_blank_question do
-      association :activity, factory: :quiz_activity_with_fill_in_the_blank_question
+      association :activity,
+        factory: :quiz_activity_with_fill_in_the_blank_question
     end
   end
 end

@@ -1,4 +1,4 @@
-class SectionDecorator < Draper::Decorator
+class LessonDecorator < Draper::Decorator
   delegate_all
 
   def new_question_paths

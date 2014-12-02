@@ -5,13 +5,11 @@
       %br
         Lessons
 .col-xs-12
-- @course.sections.each do |section|
-  .row
-    = render partial: 'section_form', locals: { section: section }
+  = render partial: 'lesson', collection: @course.lessons
 .col-xs-3.col-md-1
-  %button.btn.btn-lg.btn-default{ 'data-toggle' => 'modal', 'data-target' => '#add_section_modal' }
+  %button.btn.btn-lg.btn-default{ 'data-toggle' => 'modal', 'data-target' => '#add_lesson_modal' }
     Add lesson &plus;
-.modal.fade{ id: 'add_section_modal', tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add section', 'aria-hidden' => true }
+.modal.fade{ id: 'add_lesson_modal', tabindex: -1, role: 'dialog', 'aria-labelledby' => 'Add lesson', 'aria-hidden' => true }
   .modal-dialog
     .modal-content
       .modal-header
@@ -19,12 +17,13 @@
           %span{ 'aria-hidden' => true } &times;
           %span.sr-only Close
         %h4.modal-title New Lesson
-      = form_for @course, url: add_section_course_path(@course) do |f|
+      = form_for Lesson.new do |f|
         .modal-body
-          = fields_for :section do |sf|
+          = fields_for :lesson do |sf|
+            = f.hidden_field :course_id, value: @course.id
             .form-group
               = sf.label :name
-              = sf.text_field :name, class: 'form-control'
+              = sf.text_field :name, class: 'form-control', placeholder: 'Lesson 1'
         .modal-footer
           %button.btn.btn-default{ type: 'button', 'data-dismiss' => 'modal'} Cancel
           = f.submit class: 'btn btn-primary'

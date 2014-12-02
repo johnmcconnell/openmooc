@@ -1,16 +1,16 @@
 .col-xs-12
   .page-header
     %h1
-      = link_to "#{@section.course.title}", @section.course
+      = link_to "#{@lesson.course.title}", @lesson.course
     %br
     .dropdown
       %button.btn.btn-lg.btn-default#lesson-dropdown{ type: 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false }
-        = @section.name
+        = @lesson.name
         %span.caret
       %ul.dropdown-menu{ role: 'menu', 'aria-labeledby' => 'lesson-dropdown' }
-        - @section.course.sections.each do |section|
+        - @lesson.course.lessons.each do |lesson|
           %li{ role: 'presentation' }
-            = link_to section.name, section, role: 'menuitem', tabindex: -1
+            = link_to lesson.name, lesson, role: 'menuitem', tabindex: -1
 .col-xs-12
   There are no pages!
   = render layout: 'page_form_modal' do |modal_id|

@@ -12,5 +12,5 @@
         %p= t('lesson.new_page_description')
       .modal-footer
         %button.btn.btn-default{ type: 'button', 'data-dismiss' => 'modal'} Cancel
-        = link_to 'Add quiz', new_quiz_activity_path(@section), class: 'btn btn-default'
-        = link_to 'Add material', new_lesson_activity_path(@section), class: 'btn btn-primary'
+        = link_to 'Add question', new_multiple_choice_question_path(lesson_id: @lesson.id), class: 'btn btn-default'
+        = link_to 'Add material', new_content_path(lesson_id: @lesson.id), class: 'btn btn-primary'
