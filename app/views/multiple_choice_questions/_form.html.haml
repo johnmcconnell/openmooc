@@ -1,4 +1,4 @@
-= nested_form_for question, url: url do |f|
+= nested_form_for @question, url: url do |f|
   - extra_params.each do |(key, value)|
     = f.hidden_field key, value: value
   = f.fields_for :page_content do |pf|

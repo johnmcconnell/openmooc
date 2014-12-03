@@ -23,11 +23,11 @@ class MultipleChoiceQuestion < ActiveRecord::Base
 
   private
 
-  def correct_answer
+  def self.correct_answer
     MultipleChoiceAnswer.new(correct: true)
   end
 
-  def incorrect_answer
+  def self.incorrect_answer
     MultipleChoiceAnswer.new(correct: false)
   end
 end

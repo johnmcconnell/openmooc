@@ -9,7 +9,7 @@ class FillInTheBlankQuestion < ActiveRecord::Base
   def self.default
     new(
       answers: FillInTheBlankAnswer.new,
-      page_content: PageContent.new
+      page_content: PageContent.new,
     )
   end
 
@@ -24,5 +24,4 @@ class FillInTheBlankQuestion < ActiveRecord::Base
   end
 
   private
-
 end

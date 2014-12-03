@@ -1,7 +1,6 @@
 class PageDecorator < PartialDecorator
   delegate_all
 
-
   def type
     content.decorate.type
   end

@@ -23,7 +23,9 @@
 .col-xs-8.col-sm-4
   = render partial: 'menu'
 .col-xs-12.col-sm-8
-  = render partial: @page.content.decorate.to_partial_path(:show)
+  .panel.panel-primary
+    .panel-body
+      = render partial: @page.content.decorate.to_partial_path(:show)
 .col-xs-12.col-sm-8
   .pull-right
     = link_to @page.decorate.next_link[:text], @page.decorate.next_link[:path], class: 'btn btn-primary'

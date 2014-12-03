@@ -14,7 +14,7 @@ class ContentsController < ApplicationController
   def create
     @page = Page.create(
       lesson: @lesson,
-      content: Content.new(content_params)
+      content: Content.new(content_params),
     )
     redirect_to page_path(@page)
   end

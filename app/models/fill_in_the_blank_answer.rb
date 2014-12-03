@@ -10,7 +10,7 @@ class FillInTheBlankAnswer < ActiveRecord::Base
     self.text ||= ''
   end
 
-  def correct?(answer)
+  def correct?(_answer)
     text.strip.casecmp(answer2.strip) == 0
   end
 end
