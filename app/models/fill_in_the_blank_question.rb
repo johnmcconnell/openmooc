@@ -6,11 +6,11 @@ class FillInTheBlankQuestion < ActiveRecord::Base
   accepts_nested_attributes_for :answers, allow_destroy: true
   accepts_nested_attributes_for :page_content
 
-  def self.default
-    new(
-      answers: FillInTheBlankAnswer.new,
+  def self.default(attributes = {})
+    new({
+      answers: [ FillInTheBlankAnswer.new ],
       page_content: PageContent.new,
-    )
+    }.merge(attributes))
   end
 
   def correct_answer?(text)

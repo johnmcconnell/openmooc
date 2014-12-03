@@ -6,9 +6,11 @@ class MultipleChoiceQuestion < ActiveRecord::Base
   accepts_nested_attributes_for :answers, allow_destroy: true
   accepts_nested_attributes_for :page_content
 
-  def self.default
-    new(page_content: PageContent.new,
-        answers: [correct_answer, incorrect_answer])
+  def self.default(attributes = {})
+    new({
+      page_content: PageContent.new,
+      answers: [correct_answer, incorrect_answer]
+    }.merge(attributes))
   end
 
   def correct_answer?(text)

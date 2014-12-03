@@ -2,10 +2,11 @@ class MultipleChoiceQuestionsController < ApplicationController
   before_action :set_lesson, only: [:new, :create]
   before_action :set_question, only: [:submit_answer, :edit, :update]
   before_action :set_answer_submission, only: [:submit_answer]
+  helper :question
   respond_to :html
 
   def new
-    @question = MultipleChoiceQuestion.default
+    @question = MultipleChoiceQuestion.default(lesson: @lesson)
   end
 
   def edit

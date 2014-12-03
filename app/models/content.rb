@@ -4,9 +4,9 @@ class Content < ActiveRecord::Base
   has_one :lesson, through: :page
   accepts_nested_attributes_for :page_content
 
-  def self.default
+  def self.default(attributes = {})
     new(
-      page_content: PageContent.new,
+      { page_content: PageContent.new }.merge(attributes),
     )
   end
 end
