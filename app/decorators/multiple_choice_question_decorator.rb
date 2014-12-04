@@ -1,4 +1,4 @@
-class MultipleChoiceQuestionDecorator < PartialDecorator
+class MultipleChoiceQuestionDecorator < QuestionDecorator
   delegate_all
 
   def self.type

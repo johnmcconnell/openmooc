@@ -7,6 +7,8 @@ FactoryGirl.define do
 
     factory :example_page do
       association :content, factory: :example_content
+
+      factory :page_with_content
     end
 
     factory :example_fill_in_the_blank_question_page do
