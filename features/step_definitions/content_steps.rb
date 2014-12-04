@@ -1,7 +1,7 @@
 
 def create_content_page
-  @content ||=
-    FactoryGirl.create(:page_with_content).content
+  @page ||=
+    FactoryGirl.create(:page_with_content)
 end
 
 Given(/^I am on a lesson content page$/) do

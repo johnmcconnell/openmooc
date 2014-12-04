@@ -28,7 +28,7 @@ end
 
 ### GIVEN ###
 
-Given(/^I am on a course lessons page$/) do
+Given(/^I am on a course lesson page$/) do
   visit(lesson_path(lesson_with_course))
 end
 
@@ -56,9 +56,9 @@ Then(/^I should not see new lesson info$/) do
   expect(page).not_to have_content(new_lesson.name)
 end
 
-Then(/^I should see new content on the lessons page$/) do
+Then(/^I should see new content on the lesson page$/) do
   page_content = easy_html_remove(
-    lesson.pages.first.activity.page_content.to_s)
+    lesson.pages.first.content.page_content.to_s)
   expect(page).to have_content(page_content)
 end
 

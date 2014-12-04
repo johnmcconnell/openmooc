@@ -1,6 +1,6 @@
 class FillInTheBlankQuestionsController < ApplicationController
   before_action :set_lesson, only: [:new, :create]
-  before_action :set_question, only: [:submit_answer, :edit, :update]
+  before_action :set_question, only: [:submit_answer, :edit, :update, :find_aliases, :build_answers]
   before_action :set_answer_submission, only: [:submit_answer]
   helper :question
   respond_to :html
@@ -22,6 +22,17 @@ class FillInTheBlankQuestionsController < ApplicationController
     respond_with @page
   end
 
+  def build_answers
+    answers = answers_from_aliases
+    @question.answers += answers
+    @page = @question.page
+    render 'pages/edit'
+  end
+
+  def find_aliases
+    @aliases = Alias.query(params[:q])
+  end
+
   def update
     @question.update(question_params)
     respond_with @question.page
@@ -39,7 +50,9 @@ class FillInTheBlankQuestionsController < ApplicationController
 
   def answers_from_aliases
     answers = aliases_params.keep_if { |a| a['add'] == '1' }
-    answers.map! { |a| FillInTheBlankAnswer.from_alias(a) }
+    answers.map! do |a|
+      FillInTheBlankAnswer.new(text: a['text'])
+    end
   end
 
   def aliases_params

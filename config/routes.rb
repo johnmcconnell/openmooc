@@ -36,13 +36,12 @@ Rails.application.routes.draw do
   resources :fill_in_the_blank_questions do
     member do
       get 'find_aliases'
+      post 'build_answers'
       post 'submit_answer'
     end
   end
 
-  resources :aliases, only: [] do
-    collection do
-    end
+  resources :aliases do
   end
 
   get 'search/course', to: 'query#course'

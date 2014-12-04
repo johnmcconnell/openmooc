@@ -7,10 +7,6 @@ class FillInTheBlankAnswer < ActiveRecord::Base
     )
   end
 
-  def self.from_alias(alias_)
-    new(text: alias_['text'])
-  end
-
   def correct?(answer)
     text.strip.casecmp(answer.strip) == 0
   end

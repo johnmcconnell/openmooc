@@ -2,6 +2,6 @@ Feature: As a user I would like to add
   sections to a course
 
   Scenario:
-    Given The course has sections
+    Given The course has lessons
     When I am on a course page
-    Then I should see section links
+    Then I should see lesson links
