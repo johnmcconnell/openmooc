@@ -9,8 +9,16 @@ class MultipleChoiceQuestion < ActiveRecord::Base
   def self.default(attributes = {})
     new({
       page_content: PageContent.new,
-      answers: [correct_answer, incorrect_answer]
+      answers: [correct_answer, incorrect_answer],
     }.merge(attributes))
+  end
+
+  def self.correct_answer
+    MultipleChoiceAnswer.new(correct: true)
+  end
+
+  def self.incorrect_answer
+    MultipleChoiceAnswer.new(correct: false)
   end
 
   def correct_answer?(text)
@@ -21,15 +29,5 @@ class MultipleChoiceQuestion < ActiveRecord::Base
 
   def to_s
     page_content.to_s
-  end
-
-  private
-
-  def self.correct_answer
-    MultipleChoiceAnswer.new(correct: true)
-  end
-
-  def self.incorrect_answer
-    MultipleChoiceAnswer.new(correct: false)
   end
 end

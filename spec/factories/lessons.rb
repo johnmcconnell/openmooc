@@ -12,7 +12,7 @@ FactoryGirl.define do
     factory :example_lesson do
       pages do
         create_list(:example_content, 2) +
-        create_list(:example_fill_in_the_blank_question, 1)
+          create_list(:example_fill_in_the_blank_question, 1)
       end
     end
   end

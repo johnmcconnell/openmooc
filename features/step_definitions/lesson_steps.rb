@@ -1,6 +1,4 @@
-def lesson
-  @lesson
-end
+attr_reader :lesson
 
 def lesson_with_pages
   @lesson ||= FactoryGirl.create(:lesson_with_pages)

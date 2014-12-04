@@ -3,7 +3,7 @@ class FillInTheBlankAnswer < ActiveRecord::Base
 
   def self.default(attributes = {})
     new(
-      { text: '' }.merge(attributes)
+      { text: '' }.merge(attributes),
     )
   end
 

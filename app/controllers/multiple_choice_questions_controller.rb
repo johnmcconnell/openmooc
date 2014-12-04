@@ -16,8 +16,8 @@ class MultipleChoiceQuestionsController < ApplicationController
     @page = Page.create(
       lesson: @lesson,
       content: MultipleChoiceQuestion.new(
-        question_params
-      )
+        question_params,
+      ),
     )
     respond_with @page
   end
@@ -54,7 +54,8 @@ class MultipleChoiceQuestionsController < ApplicationController
   end
 
   def set_lesson
-    id = params[:lesson_id] || params.require(:multiple_choice_question)[:lesson_id]
+    id = params[:lesson_id] ||
+         params.require(:multiple_choice_question)[:lesson_id]
     @lesson = Lesson.find(id)
   end
 

@@ -8,7 +8,7 @@ class FillInTheBlankQuestion < ActiveRecord::Base
 
   def self.default(attributes = {})
     new({
-      answers: [ FillInTheBlankAnswer.new ],
+      answers: [FillInTheBlankAnswer.new],
       page_content: PageContent.new,
     }.merge(attributes))
   end
@@ -22,6 +22,4 @@ class FillInTheBlankQuestion < ActiveRecord::Base
   def to_s
     page_content.to_s
   end
-
-  private
 end

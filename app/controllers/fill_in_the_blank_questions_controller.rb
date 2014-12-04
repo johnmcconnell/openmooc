@@ -1,6 +1,8 @@
 class FillInTheBlankQuestionsController < ApplicationController
   before_action :set_lesson, only: [:new, :create]
-  before_action :set_question, only: [:submit_answer, :edit, :update, :find_aliases, :build_answers]
+  before_action :set_question, only: [
+    :submit_answer, :edit, :update, :find_aliases, :build_answers
+  ]
   before_action :set_answer_submission, only: [:submit_answer]
   helper :question
   respond_to :html
@@ -16,8 +18,8 @@ class FillInTheBlankQuestionsController < ApplicationController
     @page = Page.create(
       lesson: @lesson,
       content: FillInTheBlankQuestion.new(
-        question_params
-      )
+        question_params,
+      ),
     )
     respond_with @page
   end
@@ -76,7 +78,8 @@ class FillInTheBlankQuestionsController < ApplicationController
   end
 
   def set_lesson
-    id = params[:lesson_id] || params.require(:fill_in_the_blank_question)[:lesson_id]
+    id = params[:lesson_id] ||
+         params.require(:fill_in_the_blank_question)[:lesson_id]
     @lesson = Lesson.find(id)
   end
 

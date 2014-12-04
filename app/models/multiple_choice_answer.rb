@@ -3,7 +3,7 @@ class MultipleChoiceAnswer < ActiveRecord::Base
 
   def self.default(attributes = {})
     new({
-      text: ''
+      text: '',
     }.merge(attributes))
   end
 end
