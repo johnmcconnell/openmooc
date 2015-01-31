@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.default
-    respond_with(@course)
+    respond_with @course
   end
 
   def edit

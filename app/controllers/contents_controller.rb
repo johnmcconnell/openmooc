@@ -12,11 +12,11 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @page = Page.create(
+    page = Page.create(
       lesson: @lesson,
       content: Content.new(content_params),
     )
-    redirect_to page_path(@page)
+    redirect_to page_path(page)
   end
 
   def update
